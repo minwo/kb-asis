@@ -1,0 +1,21 @@
+{
+	"[css]": {
+		"editor.formatOnSave": false,
+		"editor.formatOnPaste": false,
+		"editor.defaultFormatter": null
+	},
+	"[scss]": {
+		"editor.formatOnSave": false,
+		"editor.formatOnPaste": false,
+		"editor.defaultFormatter": null
+	},
+	"[less]": {
+		"editor.formatOnSave": false,
+		"editor.formatOnPaste": false,
+		"editor.defaultFormatter": null
+	},
+	"css.format.enable": false,
+	"scss.format.enable": false,
+	"less.format.enable": false,
+	"editor.wordWrap": "off"
+}

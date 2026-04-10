@@ -1,0 +1,96 @@
+{
+  "_ignore": [
+    "DH03_COMN_ADDR_0001P_DA.html",
+    "popup-business-type.html"
+  ],
+  "DH03_LT_BF0102M_DA.html": {
+    "name": "의무보험 대상 선택",
+    "description": "손보사 의무보험 대상 선택 페이지",
+    "status": "complete",
+    "dueDate": "2026-03-15"
+  },
+  "DH03_LT_RD0200M_DA.html": {
+    "name": "플랜 선택",
+    "description": "나에게 맞는 플랜 선택 페이지",
+    "status": "complete",
+    "dueDate": "2026-03-18"
+  },
+  "DH03_LT_RD0205M_DA.html": {
+    "name": "상품 선택",
+    "description": "장기보험 상품 선택 페이지",
+    "status": "complete",
+    "dueDate": "2026-03-20"
+  },
+  "DH03_LT_BF0104M_DA.html": {
+    "name": "업종 정보 선택",
+    "description": "사업장 업종 정보 선택 페이지",
+    "status": "complete",
+    "dueDate": "2026-03-25"
+  },
+  "DH03_LT_BF0107M_DA.html": {
+    "name": "추가보장 선택",
+    "description": "사업장 조건에 맞는 추가보장 선택 페이지",
+    "status": "complete",
+    "dueDate": "2026-04-07"
+  },
+  "DH03_LT_BF0109P_DA.html": {
+    "name": "업종 선택 팝업",
+    "description": "사업장 업종 선택 팝업 모달",
+    "status": "complete",
+    "dueDate": "2026-03-25"
+  },
+  "DH03_LT_BF0129P_DA.html": {
+    "name": "다른 사업장 조사 팝업",
+    "description": "동일 방화구역 내 다른 사업장 여부 조사 팝업",
+    "status": "complete",
+    "dueDate": "2026-04-07"
+  },
+  "DH03_LT_BF0131M_DA.html": {
+    "name": "동의 대기 안내",
+    "description": "동반인 동의 대기 및 결제 정보 확인 페이지",
+    "status": "complete",
+    "dueDate": "2026-04-08"
+  },
+  "DH03_LT_BF0110M_DA.html": {
+    "name": "건물 정보 입력",
+    "description": "사업장 건물 정보 입력 및 건축물 대장 조회 페이지",
+    "status": "complete",
+    "dueDate": "2026-04-08"
+  },
+  "DH03_LT_BF0132M_DA.html": {
+    "name": "가입 전 확인",
+    "description": "해외여행보험 가입 전 고지사항 확인 페이지",
+    "status": "complete",
+    "dueDate": "2026-04-08"
+  },
+  "DH03_LT_BF0133M_DA.html": {
+    "name": "운전자보험 선택",
+    "description": "운전자보험 소개 및 FAQ 안내 페이지",
+    "status": "complete",
+    "dueDate": "2026-04-09"
+  },
+  "DH03_LT_BF0134P_DA.html": {
+    "name": "만기 유지 보너스 팝업",
+    "description": "만기 유지 보너스 환급 기준 안내 팝업",
+    "status": "complete",
+    "dueDate": "2026-04-09"
+  },
+  "DH03_LT_BF0135P_DA.html": {
+    "name": "운전자보험 가입 이벤트 팝업",
+    "description": "운전자보험 경품 지급 조건 및 가입 CTA 팝업",
+    "status": "complete",
+    "dueDate": "2026-04-10"
+  },
+  "DH03_LT_BF0136M_DA.html": {
+    "name": "보장 상세 보기",
+    "description": "운전자보험 핵심보장 상세 안내 페이지",
+    "status": "complete",
+    "dueDate": "2026-04-10"
+  },
+  "DH03_LT_BF0137M_DA.html": {
+    "name": "할인 기준 안내",
+    "description": "자동차보험 가입 고객 할인 기준 안내 페이지",
+    "status": "complete",
+    "dueDate": "2026-04-10"
+  }
+}
