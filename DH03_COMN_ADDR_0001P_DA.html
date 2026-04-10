@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ko" ng-app="app">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>주소 검색 팝업</title>
+	<link rel="stylesheet" href="assets/css/reset.css">
+	<link rel="stylesheet" href="assets/css/comn-form.css">
+	<link rel="stylesheet" href="assets/css/codex-ui.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+</head>
+
+<body class="codex-popup-body">
+	<div class="layer-dim codex-popup-dim"></div>
+	<div class="layer-wrap codex-popup-wrap codex-fade-in" import-css="['comn-form']" ng-controller="AddressPopupCtrl">
+		<div class="layer-header codex-popup-header">
+			<div class="flex-between-top gap-x-xs">
+				<h1 class="layer-title codex-popup-title">주소 검색</h1>
+				<a href="#" class="btn-pop-close codex-pop-close" role="button" ng-click="vm.popupClose('cancel')">
+					<span class="hide_txt codex-hide-txt">레이어 닫기</span>
+				</a>
+			</div>
+		</div>
+
+		<div class="layer-content codex-popup-content">
+			<div class="form-wrapper">
+				<label for="addressKeyword" class="txt-body3">도로명, 건물명 또는 지번 입력</label>
+				<div class="mt-xs2 search-row address-search-row">
+					<input type="text" id="addressKeyword" class="ip-plaintxt flex-1" placeholder="예: 테헤란로 117"
+						ng-model="vm.keyword">
+					<a href="#" role="button" class="bts line3-round" ng-click="vm.search()">검색</a>
+				</div>
+			</div>
+
+			<div class="search-result mt-m" ng-show="vm.keyword">
+				<div class="flex-between-center">
+					<p class="body-title2 fw-m">우편번호 검색결과</p>
+					<p class="txt-caption1">총 {{vm.filteredAddresses.length}}건</p>
+				</div>
+
+				<div class="no-data mt-s address-no-data" ng-show="vm.filteredAddresses.length == 0">
+					<p class="txt-body3">검색 결과가 없습니다. 다른 키워드로 다시 검색해 주세요.</p>
+				</div>
+
+				<ul class="select-list mt-s" ng-show="vm.filteredAddresses.length > 0">
+					<li ng-repeat="item in vm.filteredAddresses track by item.id">
+						<a href="#" class="items-center result-item address-result-item {{vm.selectedId == item.id ? 'on' : ''}}"
+							role="button" ng-click="vm.selectAddress(item)">
+							<div class="flex-1">
+								<p class="txt-body1 fw-m">{{item.road}}</p>
+								<p class="txt-body3 mt-xs2">{{item.jibun}}</p>
+								<p class="txt-caption1 mt-xs2">{{item.zipCode}}</p>
+							</div>
+						</a>
+					</li>
+				</ul>
+			</div>
+
+			<div class="detail-section mt-m" ng-show="vm.selectedAddress">
+				<p class="body-title2 fw-m">상세주소 입력</p>
+				<div class="r-box-line1 mt-s">
+					<p class="txt-body3">기본주소</p>
+					<p class="txt-body2 fw-m mt-xs2">{{vm.selectedAddress.road}}</p>
+					<p class="txt-caption1 mt-xs2">{{vm.selectedAddress.jibun}}</p>
+				</div>
+
+				<div class="form-wrapper mt-s">
+					<label for="detailAddress" class="txt-body3">상세주소</label>
+					<div class="mt-xs2">
+						<input type="text" id="detailAddress" class="ip-plaintxt" placeholder="예: 101동 1203호"
+							ng-model="vm.detailAddress">
+					</div>
+				</div>
+
+				<div class="r-box-gray mt-s">
+					<p class="list-body3 body-clr2">입력 예시: A동 106호, 1층 101~105호, 1/2/3층</p>
+					<p class="list-body3 body-clr2">여러 층을 사용하는 경우 층수를 모두 적어 주세요.</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="layer-cta codex-popup-cta">
+			<div class="flex-items-center gap-x-xs compact" ng-show="vm.selectedAddress">
+				<a href="#" role="button" class="bts-cta gray" ng-click="vm.resetSelection()">이전</a>
+				<a href="#" id="addrConfirmButton" role="button"
+					class="bts-cta {{vm.detailAddress ? 'navy' : 'disabled'}}"
+					ng-click="vm.popupClose('confirm')">확인</a>
+			</div>
+		</div>
+	</div>
+
+
+	<script>
+		angular.module('app', [])
+			.controller('AddressPopupCtrl', ['$scope', function ($scope) {
+				const addressList = [
+					{ id: 1, road: '서울 강남구 테헤란로 117', jibun: '서울 강남구 역삼동 823-24', zipCode: '06134' },
+					{ id: 2, road: '서울 영등포구 국제금융로 8길 26', jibun: '서울 영등포구 여의도동 23-8', zipCode: '07332' },
+					{ id: 3, road: '서울 마포구 양화로 45', jibun: '서울 마포구 서교동 354-12', zipCode: '04036' },
+					{ id: 4, road: '서울 송파구 올림픽로 300', jibun: '서울 송파구 신천동 29', zipCode: '05551' }
+				];
+
+				$scope.vm = {
+					keyword: '',
+					addresses: addressList,
+					filteredAddresses: [],
+					selectedId: null,
+					selectedAddress: null,
+					detailAddress: '',
+					search: function () {
+						const keyword = ($scope.vm.keyword || '').trim();
+						if (!keyword) {
+							$scope.vm.filteredAddresses = [];
+							$scope.vm.resetSelection();
+							return;
+						}
+
+						$scope.vm.filteredAddresses = $scope.vm.addresses.filter((item) =>
+							item.road.indexOf(keyword) > -1 || item.jibun.indexOf(keyword) > -1
+						);
+						$scope.vm.resetSelection();
+					},
+					selectAddress: function (item) {
+						$scope.vm.selectedId = item.id;
+						$scope.vm.selectedAddress = item;
+					},
+					resetSelection: function () {
+						$scope.vm.selectedId = null;
+						$scope.vm.selectedAddress = null;
+						$scope.vm.detailAddress = '';
+					},
+					popupClose: function (type) {
+						if (type === 'confirm' && !$scope.vm.detailAddress) {
+							return;
+						}
+
+						if (type === 'confirm' && window.opener && window.opener.selectAddressResult) {
+							window.opener.selectAddressResult({
+								road: $scope.vm.selectedAddress.road,
+								jibun: $scope.vm.selectedAddress.jibun,
+								zipCode: $scope.vm.selectedAddress.zipCode,
+								detail: $scope.vm.detailAddress
+							});
+						}
+
+						window.close();
+					}
+				};
+			}]);
+
+		document.addEventListener('DOMContentLoaded', function () {
+			const keywordInput = document.getElementById('addressKeyword');
+			const searchButton = document.querySelector('[ng-click="vm.search()"]');
+			const closeButton = document.querySelector('.btn-pop-close');
+
+			if (keywordInput && searchButton) {
+				keywordInput.addEventListener('keydown', function (e) {
+					if (e.key === 'Enter') {
+						e.preventDefault();
+						searchButton.click();
+					}
+				});
+			}
+
+			if (closeButton) {
+				closeButton.addEventListener('click', function (e) {
+					e.preventDefault();
+					window.close();
+				});
+			}
+		});
+	</script>
+</body>
+
+</html>

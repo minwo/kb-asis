@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>보장 상세 보기</title>
+	<link rel="stylesheet" href="assets/css/reset.css">
+	<link rel="stylesheet" href="assets/css/comn-form.css">
+</head>
+
+<body>
+	<div class="mo_kb_wrapper">
+		<div class="cm-lt-wrapper2 animate-opacity" import-css="['comn-form']">
+			<div class="flex-between-center">
+				<p class="txt-body1">보장 상세 보기</p>
+				<a href="#none" id="detailCloseButton" role="button">
+					<i class="icons circle-close"></i>
+					<span class="hide_txt">닫기</span>
+				</a>
+			</div>
+
+			<div class="mt-l">
+				<div class="flex-between-center gap-x-xs">
+					<h3 class="sub-title1">꼭 알아야 할<br>운전자보험 핵심보장</h3>
+					<a href="#none" class="bts line3-round xs" role="button">
+						<i class="icons terms mr-xs2"></i>모든 보장 내용
+					</a>
+				</div>
+			</div>
+
+			<div class="mt-l">
+				<p class="flex-items-center body-title1 fw-m"><i class="icons sale mr-xs2"></i>변호사 비용</p>
+
+				<div class="flex-items-center mt-s">
+					<div class="flex-1">
+						<p class="txt-body1">자동차사고 변호사 선임비용 손해</p>
+						<p class="txt-body3 body-clr2 mt-xs2">심급별, 자기부담금 50%</p>
+					</div>
+					<p class="value">1억원</p>
+				</div>
+
+				<div class="flex-items-center mt-s">
+					<div class="flex-1">
+						<p class="txt-body1">급발진 자동차 사고 변호사 선임비용 손해</p>
+					</div>
+					<p class="value">1억원</p>
+				</div>
+			</div>
+
+			<div class="divider medium -mx-m mt-l"></div>
+
+			<div>
+				<p class="flex-items-center body-title1 fw-m"><i class="icons notice02 mr-xs2"></i>형사 합의 비용</p>
+
+				<div class="flex-items-center mt-s">
+					<div class="flex-1">
+						<p class="txt-body1">교통사고 처리보장 A</p>
+						<p class="txt-body3 body-clr2 mt-xs2">중상해보장확대, 형사합의보장 | 비탑승중포함</p>
+					</div>
+					<p class="value">1억원</p>
+				</div>
+
+				<div class="flex-items-center mt-s">
+					<div class="flex-1">
+						<p class="txt-body1">교통사고 처리보장 A</p>
+						<p class="txt-body3 body-clr2 mt-xs2">6주미만, 중대법규위반 | 공탁금 100% 선지급</p>
+					</div>
+					<p class="value">1억원</p>
+				</div>
+			</div>
+
+			<div class="divider medium -mx-m"></div>
+
+			<div>
+				<p class="flex-items-center body-title1 fw-m"><i class="icons notice03 mr-xs2"></i>벌금 비용</p>
+
+				<div class="flex-items-center mt-s">
+					<div class="flex-1">
+						<p class="txt-body1">자동차 사고벌금 II</p>
+						<p class="txt-body3 body-clr2 mt-xs2">비탑승중포함 | 스쿨존사고 3천만원한도</p>
+					</div>
+					<p class="value">1억원</p>
+				</div>
+
+				<div class="flex-items-center mt-s">
+					<div class="flex-1">
+						<p class="txt-body1">자동차 사고벌금 (대물)</p>
+					</div>
+					<p class="value">1억원</p>
+				</div>
+			</div>
+
+			<div class="divider medium -mx-m"></div>
+
+			<div>
+				<p class="flex-items-center body-title1 fw-m"><i class="icons notice01 mr-xs2"></i>주요 치료비</p>
+				<p class="txt-body3 body-clr2 mt-xs2">사고 발생 후 등급 판정 시 등급에 따른 치료비 일시금 지급</p>
+
+				<div class="flex-items-center mt-s">
+					<div class="flex-1">
+						<p class="txt-body1">자동차 사고부상 A</p>
+						<p class="txt-body3 body-clr2 mt-xs2">1~3급 | 1급 (1천만원)</p>
+					</div>
+					<p class="value">1억원</p>
+				</div>
+
+				<div class="flex-items-center mt-s">
+					<div class="flex-1">
+						<p class="txt-body1">자동차 사고부상 A</p>
+						<p class="txt-body3 body-clr2 mt-xs2">4~14급</p>
+					</div>
+					<p class="value">1억원</p>
+				</div>
+			</div>
+
+			<div class="mt-l">
+				<p class="list-body3 body-clr2">위 금액은 최대 보장 기준이며, 플랜에 따라 달라질 수 있어요.</p>
+			</div>
+		</div>
+	</div>
+
+	<div class="cta-buttons">
+		<div class="flex-items-center gap-x-xs">
+			<a href="#none" class="bts-cta" role="button">보험료 계산</a>
+		</div>
+	</div>
+
+	<script>
+		document.addEventListener('DOMContentLoaded', function () {
+			const closeButton = document.getElementById('detailCloseButton');
+
+			if (closeButton) {
+				closeButton.addEventListener('click', function (event) {
+					event.preventDefault();
+					if (window.close) {
+						window.close();
+					}
+				});
+			}
+		});
+	</script>
+</body>
+
+</html>

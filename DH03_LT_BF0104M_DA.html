@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="assets/css/reset.css">
+	<link rel="stylesheet" href="assets/css/comn-form.css">
+
+
+</head>
+
+<body>
+	<style>
+		.divider_hide {
+			display: none;
+		}
+	</style>
+
+	<!-- 컨텐츠영역 -->
+	<div class="mo_kb_wrapper">
+		<div class="cm-lt-wrapper animate-opacity" import-css="['comn-form']">
+
+			<div>
+				<h3 class="sub-title1">업종 정보 선택</h3>
+				<p class="txt-body3">
+					아래에 해당되지 않는 업종은 온라인 가입이 어려우니,<br>다른 채널을 통해 신청해주세요
+				</p>
+
+				<div class="r-box-line1 mt-m">
+					<div class="form-wrapper">
+						<label for="category1" class="txt-body3">사업장 업종</label>
+						<div class="mt-xs2">
+							<button type="button" id="category1" class="ip-select w-full" ng-bind="vm.actulLngtrmBzcdNm"
+								onclick="window.open('DH03_LT_BF0109P_DA.html', 'bizTypePopup', 'width=600,height=700')">선택</button>
+						</div>
+					</div>
+					<div class="divider"></div>
+					<div class="form-wrapper">
+						<label for="id_mltNm" class="txt-body3">상호명</label>
+						<div>
+							<input type="text" id="id_mtlNm" class="ip-plaintxt" placeholder="2글자 이상 입력"
+								ng-model="vm.mtlNm" ng-keyup="vm.setMtlNm()">
+						</div>
+					</div>
+				</div>
+
+				<div class="r-box-gray mt-s" ng-if="vm.joinYn == 'Y'">
+					<p class="flex-items-center body-title2 fw-m"><i class="icons notice02 sm mr-xs2"></i> 온라인
+						가입 불가 업종</p>
+
+					<!-- 일반음식점 -->
+					<div ng-if="vm.actulLngtrmBzcd == '0005'">
+						<p class="txt-body2 fw-m mt-xs">일반 음식점</p>
+						<p class="list-body3 body-clr2">생선회전문점, 뷔페, 급식업소</p>
+						<p class="list-body3 body-clr2">단란주점, 일반 및 무도 유흥주점</p>
+						<p class="list-body3 body-clr2">회사, 학교, 공공기관, 일반단체등의 후생시설용으로 부설된 경우</p>
+					</div>
+					<!-- //일반음식점 -->
+
+					<!-- 휴게음식점 -->
+					<div ng-if="vm.actulLngtrmBzcd == '0004'">
+						<p class="txt-body2 fw-m mt-xs">휴게 음식점</p>
+						<p class="list-body3 body-clr2">음주행위가 허용되는 곳</p>
+						<p class="list-body3 body-clr2">생선회전문점, 뷔페, 급식업소</p>
+						<p class="list-body3 body-clr2">단란주점, 일반 및 무도유흥주점</p>
+					</div>
+					<!-- //휴게음식점 -->
+
+					<!-- 학원 -->
+					<div ng-if="vm.actulLngtrmBzcd == '0032'">
+						<p class="txt-body2 fw-m mt-xs">학원</p>
+						<p class="list-body3 body-clr2">정비학원, 교육목적이 아닌 목공방 등</p>
+						<p class="list-body3 body-clr2">독서실, 스터디카페등이 있는 학원</p>
+					</div>
+					<!-- //학원 -->
+
+					<!-- 소형판매시설 -->
+					<div ng-if="vm.actulLngtrmBzcd == '0050'">
+						<p class="txt-body2 fw-m mt-xs">소형판매시설</p>
+						<p class="list-body3 body-clr2">면적 1,000㎡ 이상인 경우</p>
+						<p class="list-body3 body-clr2">액세서리점, 금은방, 전당포, 약국, 지물포</p>
+						<p class="list-body3 body-clr2">솜제품 판매점, 도료/페인트, 노래방, 방앗간</p>
+						<p class="list-body3 body-clr2">시장내 소재 음식점</p>
+					</div>
+					<!-- //소형판매시설 -->
+				</div>
+			</div>
+		</div>
+		<!-- //컨텐츠영역 -->
+
+		<script>
+			// 페이지 로드 시 아코디언 초기화
+			document.addEventListener('DOMContentLoaded', function () {
+
+				// Accordion toggle functionality
+				const accoCtrButtons = document.querySelectorAll('.acco-ctr');
+				accoCtrButtons.forEach(function (button) {
+					button.addEventListener('click', function (e) {
+						e.preventDefault();
+						const accordion = this.closest('.accordion');
+						const hiddenLayer = accordion.querySelector('.hidden-layer');
+
+						if (hiddenLayer) {
+							hiddenLayer.classList.toggle('show');
+						}
+					});
+				});
+			});
+</html >

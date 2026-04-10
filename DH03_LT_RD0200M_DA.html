@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="assets/css/reset.css">
+	<link rel="stylesheet" href="assets/css/comn-form.css">
+	<link rel="stylesheet" href="assets/css/codex-ui.css">
+</head>
+
+<body>
+	<div class="mo_kb_wrapper">
+		<div class="cm-lt-wrapper animate-opacity" import-css="['comn-form']">
+			<div>
+				<div class="flex-between-center">
+					<h3 class="sub-title1">나에게 맞는 플랜선택</h3>
+					<a href="#" class="bts line3-round" ng-click="vm.openPopup('01')"><i
+							class="icons graph-gray01 s"></i>플랜 비교</a>
+				</div>
+
+				<div class="mt-m">
+					<a ng-repeat="data in vm.plan track by $index" href="#"
+						class="r-box-line1 flex-center {{$index > 0 ? 'mt-xs' : ''}} {{data.lngtrmContTdcd == vm.lngtrmContTdcd ? 'on' : ''}}"
+						ng-click="vm.confirmChgPlan(data)">
+						<i class="icons {{data.imgClass}} m"></i>
+						<div class="flex-1 ml-xs">
+							<div class="flex-center">
+								<div class="flex-grow flex-1 mr-xs">
+									<p class="body-title1">신솔종합</p>
+									<p class="txt-caption1 mt-xs3">설명</p>
+								</div>
+								<p class="body-title1 fw-b">3,9000원</p>
+							</div>
+							<div class="mt-xs flex-wrap gap-x-xs2">
+								<span ng-repeat="tag in data.tag track by $index"
+									class="label-box {{$index == 0 ? 'sys-clr3' : ''}}">기본</span>
+							</div>
+						</div>
+					</a>
+				</div>
+
+				<div class="divider medium -mx-m"></div>
+				<div class="link-box">
+					<a href="#" class="txt-body1 flex-between-center" ng-click="vm.openPopup('02')">
+						<p class="flex-center">
+							도움말
+						</p>
+						<i class="icons arow-r s"></i>
+					</a>
+				</div>
+
+			</div>
+			<div class="layer-cta plan-cta">
+				<div class="flex-items-center gap-x-xs">
+					<button type="button" ng-click="vm.nextStep()" class="bts-cta navy" id="planNextButton">다음</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		document.addEventListener('DOMContentLoaded', function () {
+			const nextButton = document.getElementById('planNextButton');
+			const planCards = document.querySelectorAll('.r-box-line1');
+
+			function syncPlanButton() {
+				const hasSelectedPlan = document.querySelector('.r-box-line1.on');
+				nextButton.disabled = !hasSelectedPlan;
+				nextButton.classList.toggle('navy', !!hasSelectedPlan);
+				nextButton.classList.toggle('disabled', !hasSelectedPlan);
+			}
+
+			planCards.forEach((card) => {
+				card.addEventListener('click', function () {
+					planCards.forEach((item) => item.classList.remove('on'));
+					card.classList.add('on');
+					syncPlanButton();
+				});
+			});
+
+			syncPlanButton();
+		});
+	</script>
+</body>
+
+</html>

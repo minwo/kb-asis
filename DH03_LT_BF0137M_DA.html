@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>할인 기준 안내</title>
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/comn-form.css">
+</head>
+
+<body>
+    <div class="mo_kb_wrapper">
+        <div class="cm-lt-wrapper2 animate-opacity" import-css="['comn-form']">
+            <div class="flex-between-center">
+                <p class="txt-body1">할인 기준 안내</p>
+                <a href="#none" id="discountGuideCloseButton" role="button">
+                    <i class="icons circle-close"></i>
+                    <span class="hide_txt">닫기</span>
+                </a>
+            </div>
+
+            <div class="mt-l">
+                <h3 class="sub-title1">KB손해보험 자동차보험 가입 고객 할인</h3>
+            </div>
+
+            <div class="r-box-gray mt-m">
+                <div class="flex-between-center">
+                    <p class="txt-body1 fw-m">매월 보험료</p>
+                    <p class="body-title1 sys-clr3">5% 할인</p>
+                </div>
+            </div>
+
+            <div class="r-box-line1 mt-sm2">
+                <p class="txt-body1 fw-m">적용조건</p>
+                <p class="list-body2 mt-xs">KB손해보험 자동차보험 이 보험의 가입자(또는 피보험자)가 같을 때</p>
+                <p class="list-body2">보험료 납부 시점에 자동차보험 가입 상태 유지되어야 적용</p>
+                <p class="list-body2">회사 기준에 따라 가입 할인이 어려울 경우 적용 제외 가능</p>
+            </div>
+
+            <div class="divider medium -mx-m mt-l"></div>
+
+            <div>
+                <h3 class="sub-title1">Tmap 안전운전 할인</h3>
+            </div>
+
+            <div class="mt-m">
+                <table class="cm-table">
+                    <colgroup>
+                        <col style="width:33.3%">
+                        <col style="width:33.3%">
+                        <col style="width:33.4%">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th>
+                                <p class="body-title2">안전운전점수</p>
+                            </th>
+                            <th>
+                                <p class="body-title2">65점 이상~<br>69점 이하</p>
+                            </th>
+                            <th>
+                                <p class="body-title2">70점 이상</p>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <p class="body-title3">할인율</p>
+                                <p class="txt-body3 body-clr2 mt-xs2">(가입 후 1년간)</p>
+                            </td>
+                            <td>
+                                <p class="body-title3 sys-clr3">4.0%</p>
+                            </td>
+                            <td>
+                                <p class="body-title3 sys-clr3">11.5%</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="r-box-line1 mt-s">
+                <p class="txt-body1 fw-m">적용조건</p>
+                <p class="list-body2 mt-xs">티맵 안전운전 점수 65점 이상인 피보험자</p>
+                <p class="list-body2">누적 주행거리 1,000km 이상 필수<br>(최근 6개월 내 500km 이상 주행 기록 반영)</p>
+                <p class="list-body2">가입 후 점수가 올라도 추가 할인 미적용<br>(가입 시점 점수 기준)</p>
+                <p class="list-body2">제휴사의 계약 종료 등 사정에 따라 적용되지 않을 수 있음</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="cta-buttons">
+        <div class="flex-items-center gap-x-xs">
+            <a href="#none" id="discountGuideConfirmButton" class="bts-cta" role="button">확인</a>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const closeButton = document.getElementById('discountGuideCloseButton');
+            const confirmButton = document.getElementById('discountGuideConfirmButton');
+
+            function closeGuide(event) {
+                event.preventDefault();
+                if (window.close) {
+                    window.close();
+                }
+            }
+
+            if (closeButton) {
+                closeButton.addEventListener('click', closeGuide);
+            }
+
+            if (confirmButton) {
+                confirmButton.addEventListener('click', closeGuide);
+            }
+        });
+    </script>
+</body>
+
+</html>

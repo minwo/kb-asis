@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="assets/css/reset.css">
+	<link rel="stylesheet" href="assets/css/comn-form.css">
+</head>
+
+<body>
+	<style>
+		.divider_hide {
+			display: none;
+		}
+	</style>
+
+	<!-- 컨텐츠영역 -->
+	<div class="mo_kb_wrapper">
+		<div class="cm-lt-wrapper animate-opacity" import-css="['comn-form']">
+			<div>
+				<div class="flex-between-center items-start">
+					<div class="flex-center">
+						<i class="icons plan-rldmg03 mr-xs"></i>
+						<button type="button" class="ip-select sub-title1" ng-click="vm.chgPlan()">주천2</button>
+					</div>
+					<div class="text-right">
+						<p class="title-headline2 sys-clr3"><span class="sub-title2 fw-m sys-clr3">월</span> <span
+								class="count-up" data-start="0" data-end="43560" data-duration="2000">43,560</span>원</p>
+						<span class="label-box mt-xs3">손해보험계약 완료</span>
+					</div>
+				</div>
+			</div>
+			<div class="divider spacing-s"></div>
+
+			<div>
+				<div class="data-row">
+					<p class="txt-body2">예상기간금금</p>
+					<p class="value">711,260원<span class="txt-body3 body-clr1">(51.50%)</span></p>
+				</div>
+				<div class="data-row mt-xs">
+					<p class="txt-body2">보험기간</p>
+					<p class="value">5년납/만기 <span class="txt-body3 body-clr1"></span></p>
+				</div>
+				<div class="data-row mt-xs" ng-if="false">
+					<p class="txt-body2">종합보험</p>
+					<p class="value">20년만기 <span class="txt-body3 body-clr1">(최대20년)</span></p>
+				</div>
+			</div>
+
+			<div class="-mx-24">
+				<div class="guarnt-util">
+					<div class="fixed-area flex-between-center">
+						<div class="txt-body2 fw-m">
+							보장 <span class="blue-clr1">9개</span>
+							<a href="#" class="bts line3-round tiny ml-xs" ng-show="false"
+								ng-click="vm.chgCvrBtn(!vm.showChgCvrBtn)"
+								ng-bind="vm.showChgCvrBtn ? '변경적용' : '변경'">변경</a>
+						</div>
+						<div>
+							<a href="#" class="accordion-all txt-body3 fw-m caption-clr"
+								ng-click="vm.allCtr($event);">모두 열기<i class="icons arow-b s ml-xs"></i></a>
+						</div>
+					</div>
+				</div>
+
+				<div class="cm-accordion guarnt-accordion">
+					<!-- 사업장 손해 및 이용 배상 보장 -->
+					<div class="accordion">
+						<div class="flex-between-center acco-ctr">
+							<p class="sub-title2">사업장 손해 및 이용 배상 보장</p>
+							<a href="#" class="body-title2 blue-clr1" ng-click="vm.ltAccordion($event);">4개<i
+									class="icons arow-b s ml-xs"></i></a>
+						</div>
+						<div class="hidden-layer">
+							<div class="flex-between-center">
+								<div class="txt-body1">화재손해(건물)</div>
+								<div class="text-right">
+									<p class="body-title2 w-76">2천만원</p>
+								</div>
+							</div>
+							<div class="divider spacing-s"></div>
+							<div class="flex-between-center">
+								<div class="txt-body1">화재손해(실)</div>
+								<div class="text-right">
+									<p class="body-title2 w-76">2천만원</p>
+								</div>
+							</div>
+							<div class="divider spacing-s"></div>
+							<div class="flex-between-center">
+								<div class="txt-body1">화재손해(침기)</div>
+								<div class="text-right">
+									<p class="body-title2 w-76">2천만원</p>
+								</div>
+							</div>
+							<div class="divider spacing-s"></div>
+							<div class="flex-between-center">
+								<div class="txt-body1">화재배상책임</div>
+								<div class="text-right">
+									<p class="body-title2 w-76">2천만원</p>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- 부가보장 -->
+					<div class="accordion">
+						<div class="flex-between-center acco-ctr">
+							<p class="sub-title2">부가보장</p>
+							<a href="#" class="body-title2 blue-clr1" ng-click="vm.ltAccordion($event);">6개<i
+									class="icons arow-b s ml-xs"></i></a>
+						</div>
+						<div class="hidden-layer">
+							<div class="flex-between-center">
+								<div class="txt-body1">시설소유관리자배상책임 <a href="#"><i class="icons tooltip-gray s"><span
+												class="hide_txt">도움말</span></i></a></div>
+								<div class="text-right">
+									<p class="body-title2 w-76">2천만원</p>
+								</div>
+							</div>
+							<div class="txt-body3 body-clr1 mt-xs2">자기부담금 10만원</div>
+							<div class="txt-body3 body-clr1">증: 임대용식점(주유관때)</div>
+							<div class="divider spacing-s"></div>
+							<div class="flex-between-center">
+								<div class="txt-body1">음식물배상책임 <a href="#"><i class="icons tooltip-gray s"><span
+												class="hide_txt">도움말</span></i></a></div>
+								<div class="text-right">
+									<p class="body-title2">인당 1천만원</p>
+								</div>
+							</div>
+							<div class="txt-body3">사고당 3억원</div>
+							<div class="txt-body3 body-clr1 mt-xs2">자기부담금 30만원</div>
+							<div class="divider spacing-s"></div>
+							<div class="flex-between-center">
+								<div class="txt-body1">시설소유관리자배상책임(위재배상책임)</div>
+								<div class="text-right">
+									<p class="body-title2">인당 10억원</p>
+								</div>
+							</div>
+							<div class="txt-body3">14사고당 3억원</div>
+						</div>
+					</div>
+
+					<!-- 화재로인한 휴업과 리스크대비 -->
+					<div class="accordion">
+						<div class="flex-between-center acco-ctr">
+							<p class="sub-title2">화재로인한 휴업과 리스크대비</p>
+							<a href="#" class="body-title2 blue-clr1" ng-click="vm.ltAccordion($event);">5개<i
+									class="icons arow-b s ml-xs"></i></a>
+						</div>
+						<div class="hidden-layer">
+							<div class="flex-between-center">
+								<div class="txt-body1">점포유선손해</div>
+								<div class="text-right">
+									<p class="body-title2 w-76">2백만원</p>
+								</div>
+							</div>
+							<div class="divider spacing-s"></div>
+							<div class="flex-between-center">
+								<div class="txt-body1">화재담금</div>
+								<div class="text-right">
+									<p class="body-title2 w-76">2백만원</p>
+								</div>
+							</div>
+							<div class="divider spacing-s"></div>
+							<div class="flex-between-center">
+								<div class="txt-body1">민사소송비용비</div>
+								<div class="text-right">
+									<p class="body-title2 w-76">2백만원</p>
+								</div>
+							</div>
+							<div class="divider spacing-s"></div>
+							<div class="flex-between-center">
+								<div class="txt-body1">행정소송비용비</div>
+								<div class="text-right">
+									<p class="body-title2 w-76">2백만원</p>
+								</div>
+							</div>
+							<div class="divider spacing-s"></div>
+							<div class="flex-between-center">
+								<div class="txt-body1">위증지재손해</div>
+								<div class="text-right">
+									<p class="body-title2 w-76">2백만원</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- <div class="divider medium mt-0"></div>
+			<div class="text-center">
+				<button class="bts round-bg1 md" type="button" ng-click="vm.sendSms()"><i class="icons share-black01"></i> 보험료 계산결과 공유</button>
+			</div> -->
+				<div class="divider medium mt-0"></div>
+
+				<div class="link-box">
+					<a href="#" class="txt-body1 flex-between-center px-24" role="button"
+						ng-click="vm.openQuestion('medicalNoAccd2')">
+						<p class="flex-center">
+							<i class="icons sale mr-xs"></i>
+							실손보험 할인 상세
+						</p>
+						<i class="icons arow-r s"></i>
+					</a>
+					<div class="divider"></div>
+					<a href="#" class="txt-body1 flex-between-center px-24" role="button"
+						ng-click="vm.openQuestion('refund')">
+						<p class="flex-center">
+							<i class="icons pencil mr-xs"></i>
+							실손의료비 환급 및 납입중지 제도
+						</p>
+						<i class="icons arow-r s"></i>
+					</a>
+					<div class="divider"></div>
+					<a href="#" class="txt-body1 flex-between-center px-24" role="button"
+						ng-click="vm.openPopup('terms')">
+						<p class="flex-center">
+							<i class="icons terms mr-xs"></i>
+							약관
+						</p>
+						<i class="icons arow-r s"></i>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- //컨텐츠영역 -->
+
+	<!-- DH03_CO_CM0002M_DA.html <- 복붙영역 적용 필요 -->
+	<div class="mo_footer_wrap">
+		<div class="bottom_button_wrapper">
+
+			<!-- 복붙 영역 DH03_CO_CM0002M_DA.html -->
+			<div class="cta-buttons cta-shadow">
+				<div class="flex-between-center py-12">
+					<p class="body-title1">표준형</p>
+					<p class="sub-title1 sys-clr3"><span class="body-title1 sys-clr3">월</span> 18,650원</p>
+				</div>
+				<div class="compact gap-x-xs mt-s2">
+					<a href="#none" class="bts-cta gray" role="button">전화문의</a>
+					<a href="#none" class="bts-cta" role="button">이대로 진행</a>
+				</div>
+			</div>
+			<!-- //복붙 영역 -->
+
+		</div>
+	</div>
+
+	<script>
+		// Accordion toggle functionality
+		document.addEventListener('DOMContentLoaded', function () {
+			// 아코디언 제어 버튼 클릭 이벤트
+			const accoCtrButtons = document.querySelectorAll('.acco-ctr');
+
+			accoCtrButtons.forEach(function (button) {
+				button.addEventListener('click', function (e) {
+					e.preventDefault();
+					const accordion = this.closest('.accordion');
+					const hiddenLayer = accordion.querySelector('.hidden-layer');
+
+					if (hiddenLayer) {
+						hiddenLayer.classList.toggle('show');
+					}
+				});
+			});
+
+			// 모두 열기 버튼 이벤트
+			const accordionAllBtn = document.querySelector('.accordion-all');
+			if (accordionAllBtn) {
+				accordionAllBtn.addEventListener('click', function (e) {
+					e.preventDefault();
+					const allHiddenLayers = document.querySelectorAll('.hidden-layer');
+					allHiddenLayers.forEach(function (layer) {
+						layer.classList.add('show');
+					});
+				});
+			}
+		});
+	</script>
+
+	<style>
+		.hidden-layer {
+			display: none;
+		}
+
+		.hidden-layer.show {
+			display: block;
+		}
+	</style>
+</body>
+
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>업종 선택 팝업</title>
+	<link rel="stylesheet" href="assets/css/reset.css">
+	<link rel="stylesheet" href="assets/css/comn-form.css">
+	<link rel="stylesheet" href="assets/css/codex-ui.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+</head>
+
+<body class="codex-popup-body">
+	<div class="codex-popup-dim"></div>
+	<div class="layer-wrap codex-popup-wrap codex-fade-in" import-css="['comn-form']" ng-controller="PopupCtrl">
+
+		<div class="layer-content codex-popup-content biz-popup-content">
+			<p class="sub-title2">사업장 업종 선택</p>
+
+			<ul class="select-list codex-select-list">
+				<li ng-repeat="data in vm.planByBizKndArray track by $index">
+					<a href="#" class="items-center codex-select-item biz-popup-item {{vm.bizkndScCd == data.cd ? 'on' : ''}}"
+						ng-click="vm.selBizKndSc(data)">
+						<div style="flex: 1;">
+							<p class="txt-body1 fw-m">{{data.nm}}</p>
+							<p class="txt-body3 mt-xs2" ng-show="vm.bizkndScCd == data.cd">{{data.desc}}</p>
+						</div>
+
+					</a>
+				</li>
+			</ul>
+
+		</div>
+
+		<div class="layer-cta codex-popup-cta">
+			<div class="flex-center">
+				<a href="#" id="mo_btn_09P" class="bts-cta" role="button" ng-click="vm.popupClose('confirm')">완료</a>
+			</div>
+		</div>
+
+		<a href="#none" ng-click="vm.popupClose('cancel')" class="btn-pop-close codex-pop-close" role="button"><span
+				class="hide_txt codex-hide-txt">닫기</span></a>
+	</div>
+
+	<script>
+		// Mock data for business types (if AngularJS is not available)
+		const mockData = [
+			{ cd: 'food', nm: '일반음식점(주류 판매)', desc: '주류를 판매하는 일반 음식점' },
+			{ cd: 'cafe', nm: '휴게음식점(주류 미판매)', desc: '주류를 판매하지 않는 휴게 음식점' },
+			{ cd: 'retail', nm: '소형판매시설', desc: '소형 판매 시설' },
+			{ cd: 'office', nm: '일반업무시설', desc: '일반 업무 시설' },
+			{ cd: 'school', nm: '학원(정비학원 제외)', desc: '일반 학원' },
+			{ cd: 'officetel', nm: '오피스텔', desc: '오피스텔' }
+		];
+
+		// AngularJS controller simulation
+		angular.module('app', [])
+			.controller('PopupCtrl', ['$scope', function ($scope) {
+				$scope.vm = {
+					planByBizKndArray: mockData,
+					bizkndScCd: null,
+					selBizKndSc: function (data) {
+						$scope.vm.bizkndScCd = data.cd;
+					},
+					popupClose: function (type) {
+						if (type === 'confirm' && $scope.vm.bizkndScCd) {
+							const selected = $scope.vm.planByBizKndArray.find(d => d.cd === $scope.vm.bizkndScCd);
+							if (window.opener && window.opener.selectBusinessType) {
+								window.opener.selectBusinessType(selected);
+								window.close();
+							}
+						} else if (type === 'cancel') {
+							window.close();
+						}
+					}
+				};
+			}]);
+
+		// Fallback vanilla JavaScript for popup
+		document.addEventListener('DOMContentLoaded', function () {
+			const layerWrap = document.querySelector('.layer-wrap');
+			const closeBtn = document.querySelector('.btn-pop-close');
+			const confirmBtn = document.getElementById('mo_btn_09P');
+
+			if (layerWrap) {
+				layerWrap.classList.add('show');
+			}
+
+			// Close button handler
+			if (closeBtn) {
+				closeBtn.addEventListener('click', function (e) {
+					e.preventDefault();
+					if (window.opener) {
+						window.close();
+					}
+				});
+			}
+
+			// Confirm button handler
+			if (confirmBtn) {
+				confirmBtn.addEventListener('click', function (e) {
+					e.preventDefault();
+					const selectedItem = document.querySelector('.items-center.on');
+					if (selectedItem) {
+						const itemText = selectedItem.querySelector('.txt-body1').textContent;
+						if (window.opener && window.opener.selectBusinessType) {
+							window.opener.selectBusinessType(itemText);
+							window.close();
+						}
+					}
+				});
+			}
+
+			// Item selection handler
+			const items = document.querySelectorAll('.items-center');
+			items.forEach(item => {
+				item.addEventListener('click', function (e) {
+					e.preventDefault();
+					items.forEach(i => i.classList.remove('on'));
+					this.classList.add('on');
+				});
+			});
+
+			// Auto-display popup
+			if (layerWrap) {
+				setTimeout(() => {
+					layerWrap.style.display = 'flex';
+				}, 100);
+			}
+		});
+	</script>
+</body>
+
+</html>

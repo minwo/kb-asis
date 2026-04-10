@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>추가보장 선택</title>
+	<link rel="stylesheet" href="assets/css/reset.css">
+	<link rel="stylesheet" href="assets/css/comn-form.css">
+	<link rel="stylesheet" href="assets/css/codex-ui.css">
+</head>
+
+<body>
+	<div id="container" import-css="['comn-form']">
+		<div id="content" class="cm-lt-wrapper2 animate-opacity">
+
+			<h3 class="sub-title1">추가보장 선택</h3>
+			<p class="txt-body3 mt-xs2">사업장 유형에 맞는 추가보장을 선택해 주세요. 선택한 보장은 아래에서 바로 세부 조건을 확인할 수 있습니다.</p>
+
+			<div class="coverage-list mt-m">
+				<div class="r-box-line1 coverage-card on" data-code="L52950">
+					<a href="#" class="flex-center gap-xs coverage-toggle" role="button">
+						<i class="icons biz-fire04 md"></i>
+						<div class="flex-grow">
+							<p class="body-title1 fw-m">음식물 배상책임</p>
+							<p class="txt-caption1 mt-xs2">판매한 음식 때문에 손님에게 식중독 등<br>건강상 피해가 발생해 배상이 필요할 때</p>
+						</div>
+						<i class="icons check"></i>
+					</a>
+					<div class="r-box-line1 bg-white flex-between-center py-sm2 px-sm mt-xs coverage-detail">
+						<div>
+							<p class="txt-body3">업종 : <span class="fw-m">일반음식점(주류 판매)</span></p>
+							<p class="txt-body3 mt-xs2">전년도 연 매출 : <span class="fw-m">1억 2천만 원</span></p>
+						</div>
+						<a href="#" role="button" class="bts round line3 tiny detail-action">수정</a>
+					</div>
+				</div>
+
+				<div class="r-box-line1 mt-sm2 coverage-card" data-code="L14310">
+					<a href="#" class="flex-center gap-xs coverage-toggle" role="button">
+						<i class="icons biz-fire05 md"></i>
+						<div class="flex-grow">
+							<p class="body-title1 fw-m">시설소유관리자배상책임</p>
+							<p class="txt-caption1 mt-xs2">미끄러운 바닥이나 떨어진 간판 등<br>사업장 시설로 인해 사고가 발생했을 때</p>
+						</div>
+						<i class="icons check"></i>
+					</a>
+					<div class="r-box-line1 bg-white flex-between-center py-sm2 px-sm mt-xs coverage-detail">
+						<div>
+							<p class="txt-body3">업종 : <span class="fw-m">음식점 및 휴게음식점</span></p>
+						</div>
+						<a href="#" role="button" class="bts round line3 tiny detail-action">수정</a>
+					</div>
+				</div>
+
+				<div class="r-box-line1 mt-sm2 coverage-card" data-code="L87530">
+					<a href="#" class="flex-center gap-xs coverage-toggle" role="button">
+						<i class="icons biz-fire06 md"></i>
+						<div class="flex-grow">
+							<p class="body-title1 fw-m">가스사고배상책임</p>
+							<p class="txt-caption1 mt-xs2">가스 누출로 옆 매장이나 이웃집에 피해가<br>발생해 손해를 배상해야 할 때</p>
+						</div>
+						<i class="icons check"></i>
+					</a>
+					<div class="r-box-line1 bg-white flex-between-center py-sm2 px-sm mt-xs coverage-detail">
+						<div>
+							<p class="txt-body3">가스종류 : <span class="fw-m">LPG</span></p>
+							<p class="txt-body3 mt-xs2">위치 : <span class="fw-m">건물 외부 저장소</span></p>
+							<p class="txt-body3 mt-xs2">관리코드 : <span class="fw-m">없음</span></p>
+						</div>
+						<a href="#" role="button" class="bts round line3 tiny detail-action">수정</a>
+					</div>
+				</div>
+
+				<div class="r-box-line1 mt-sm2 coverage-card" data-code="L19180">
+					<a href="#" class="flex-center gap-xs coverage-toggle" role="button">
+						<i class="icons biz-fire07 md"></i>
+						<div class="flex-grow">
+							<p class="body-title1 fw-m">학원 및 교습소 배상책임</p>
+							<p class="txt-caption1 mt-xs2">수업 중 사고나 시설 문제로 학생이 다치거나<br>물건이 파손되었을 때 대비할 수 있어요</p>
+						</div>
+						<i class="icons check"></i>
+					</a>
+					<div class="r-box-line1 bg-white flex-between-center py-sm2 px-sm mt-xs coverage-detail">
+						<div>
+							<p class="txt-body3">기숙사 유무 : <span class="fw-m">아니오</span></p>
+							<p class="txt-body3 mt-xs2">학생 수 : <span class="fw-m">120명</span></p>
+						</div>
+						<a href="#" role="button" class="bts round line3 tiny detail-action">수정</a>
+					</div>
+				</div>
+			</div>
+
+			<div class="layer-cta coverage-cta">
+				<div class="flex-items-center gap-x-xs">
+					<button type="button" class="bts-cta" id="nextButton">다음</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<script>
+		document.addEventListener('DOMContentLoaded', function () {
+			const cards = document.querySelectorAll('.coverage-card');
+			const nextButton = document.getElementById('nextButton');
+
+			function syncButtonState() {
+				const selectedCount = document.querySelectorAll('.coverage-card.on').length;
+			}
+
+			cards.forEach((card) => {
+				const toggle = card.querySelector('.coverage-toggle');
+				const action = card.querySelector('.detail-action');
+
+				toggle.addEventListener('click', function (e) {
+					e.preventDefault();
+					card.classList.toggle('on');
+					syncButtonState();
+				});
+
+				action.addEventListener('click', function (e) {
+					e.preventDefault();
+					window.alert('세부 조건 수정 팝업은 다음 단계에서 연결할 수 있습니다.');
+				});
+			});
+
+			nextButton.addEventListener('click', function () {
+				const selected = Array.from(document.querySelectorAll('.coverage-card.on'))
+					.map((card) => card.querySelector('.body-title1').textContent.trim());
+				window.alert('선택한 추가보장: ' + selected.join(', '));
+			});
+
+			syncButtonState();
+		});
+	</script>
+</body>
+
+</html>

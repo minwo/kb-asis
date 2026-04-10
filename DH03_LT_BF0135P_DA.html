@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>운전자보험 가입 이벤트 팝업</title>
+	<link rel="stylesheet" href="assets/css/reset.css">
+	<link rel="stylesheet" href="assets/css/comn-form.css">
+	<link rel="stylesheet" href="assets/css/codex-ui.css">
+</head>
+
+<body class="codex-popup-body">
+	<div class="layer-dim codex-popup-dim"></div>
+	<div class="layer-wrap codex-popup-wrap codex-fade-in" import-css="['comn-form']">
+		<div class="layer-header codex-popup-header">
+			<div class="flex-between-top gap-x-xs">
+				<h1 class="layer-title codex-popup-title">가입 이벤트</h1>
+				<a href="#" id="joinEventCloseButton" class="btn-pop-close codex-pop-close" role="button">
+					<span class="hide_txt codex-hide-txt">닫기</span>
+				</a>
+			</div>
+		</div>
+
+		<div class="layer-content codex-popup-content">
+			<div class="text-center">
+				<img src="https://www.figma.com/api/mcp/asset/4606d8a1-b66e-4d04-acdc-878e470f9eb5" alt="" width="167" height="100">
+			</div>
+
+			<div class="mt-xs text-center">
+				<p class="sub-title2">지금 운전자보험 가입 시,<br><span class="sys-clr3">상품권 최대 3만원</span> 또는 <span class="sys-clr3">커피 쿠폰 당첨!</span></p>
+				<p class="txt-body3 mt-xs2">실제 납입한 월 보험료 기준으로 혜택이 상이하며,<br>2회차 정상 납입 시 적용됩니다.</p>
+			</div>
+
+			<div class="mt-sm2">
+				<table class="cm-table">
+					<colgroup>
+						<col style="width:50%">
+						<col style="width:50%">
+					</colgroup>
+					<thead>
+						<tr>
+							<th>
+								<p class="body-title2">지급 조건 <span class="txt-caption2">(실 납입보험료)</span></p>
+							</th>
+							<th>
+								<p class="body-title2">지급 경품</p>
+							</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><p class="body-title3 body-clr1">월 9천원 이상</p></td>
+							<td><p class="body-title3 body-clr1">신세계 이마트 1만원</p></td>
+						</tr>
+						<tr>
+							<td><p class="body-title3 body-clr1">월 2만원 이상</p></td>
+							<td><p class="body-title3 body-clr1">신세계 이마트 2만원</p></td>
+						</tr>
+						<tr>
+							<td><p class="body-title3 body-clr1">월 3만원 이상</p></td>
+							<td><p class="body-title3 body-clr1">신세계 이마트 3만원</p></td>
+						</tr>
+						<tr>
+							<td><p class="body-title3 body-clr1">[실속가득] 플랜 가입 시</p></td>
+							<td><p class="body-title3 body-clr1">스타벅스 카페라떼 쿠폰</p></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+			<div class="mt-sm2">
+				<p class="list-body3 body-clr2">실제 납입하신 월 보험료 기준으로 경품 지급</p>
+				<p class="list-body3 body-clr2">특정 상품 및 제휴처별 이벤트 제외</p>
+				<p class="list-body3 body-clr2">상품권은 1만원으로 지급되며, 3만원 당첨 시 3매로 지급됩니다.</p>
+			</div>
+
+			<p class="txt-caption3 mt-s">준법감시인 심의필 제2025-000호(2025.00.00~2026.00.00)</p>
+		</div>
+
+		<div class="layer-cta codex-popup-cta">
+			<div class="flex-items-center gap-x-xs">
+				<a href="#" id="joinEventConfirmButton" class="bts-cta" role="button">가입하기</a>
+			</div>
+		</div>
+	</div>
+
+	<script>
+		document.addEventListener('DOMContentLoaded', function () {
+			const closeButton = document.getElementById('joinEventCloseButton');
+			const confirmButton = document.getElementById('joinEventConfirmButton');
+			function closePopup(event) {
+				event.preventDefault();
+				if (window.close) {
+					window.close();
+				}
+			}
+
+			if (closeButton) {
+				closeButton.addEventListener('click', closePopup);
+			}
+
+			if (confirmButton) {
+				confirmButton.addEventListener('click', closePopup);
+			}
+		});
+	</script>
+</body>
+
+</html>

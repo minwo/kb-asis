@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>만기 유지 보너스</title>
+	<link rel="stylesheet" href="assets/css/reset.css">
+	<link rel="stylesheet" href="assets/css/comn-form.css">
+	<link rel="stylesheet" href="assets/css/codex-ui.css">
+</head>
+
+<body class="codex-popup-body">
+	<div class="layer-dim codex-popup-dim"></div>
+	<div class="layer-wrap codex-popup-wrap codex-fade-in" import-css="['comn-form']">
+		<div class="layer-header codex-popup-header">
+			<div class="flex-between-top gap-x-xs">
+				<h1 class="layer-title codex-popup-title">만기 유지 보너스</h1>
+				<a href="#" id="bonusCloseButton" class="btn-pop-close codex-pop-close" role="button">
+					<span class="hide_txt codex-hide-txt">닫기</span>
+				</a>
+			</div>
+		</div>
+
+		<div class="layer-content codex-popup-content">
+			<div class="r-box-gray mt-xs">
+				<div class="flex-between-center">
+					<p class="body-title1">총 납입 보험료</p>
+					<p class="body-title1 sys-clr3">5% 환급</p>
+				</div>
+			</div>
+
+			<div class="r-box-line1 mt-m">
+				<p class="list-body2">보험 기간이 끝나는 날에 지급</p>
+				<p class="list-body2">만기까지 유지한 경우에만 지급되며, 중도 해지 시 환급 혜택 소멸</p>
+				<p class="list-body2">산정기준 : 월 보험료 x 5% x 12 x 납입기간(년)<br>(단, 가족일상생활배상책임IV(3년갱신형) 보험료는 계산에서 제외)</p>
+				<p class="list-body2">가입 중 계약 내용이 변경되면 변경된 기준에 맞춰 지급</p>
+			</div>
+		</div>
+
+		<div class="layer-cta codex-popup-cta">
+			<div class="flex-items-center gap-x-xs">
+				<a href="#" id="bonusConfirmButton" class="bts-cta" role="button">확인</a>
+			</div>
+		</div>
+	</div>
+
+	<script>
+		document.addEventListener('DOMContentLoaded', function () {
+			const closeButton = document.getElementById('bonusCloseButton');
+			const confirmButton = document.getElementById('bonusConfirmButton');
+
+			function closePopup(event) {
+				event.preventDefault();
+				if (window.close) {
+					window.close();
+				}
+			}
+
+			if (closeButton) {
+				closeButton.addEventListener('click', closePopup);
+			}
+
+			if (confirmButton) {
+				confirmButton.addEventListener('click', closePopup);
+			}
+		});
+	</script>
+</body>
+
+</html>

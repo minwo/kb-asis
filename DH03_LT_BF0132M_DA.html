@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>가입 전 확인해주세요</title>
+	<link rel="stylesheet" href="assets/css/reset.css">
+	<link rel="stylesheet" href="assets/css/comn-form.css">
+</head>
+
+<body>
+	<div class="mo_kb_wrapper">
+		<div class="cm-lt-wrapper animate-opacity" import-css="['comn-form']">
+			<div>
+
+				<div>
+					<h3 class="sub-title1">가입 전 확인해주세요</h3>
+					<p class="txt-body3 mt-xs2">해당 사항이 있는지 확인하고 사실대로 알려주세요</p>
+				</div>
+
+				<div class="mt-m">
+					<a href="#none" id="selectAllNo" class="bts line3 md rounded-sm w-full" role="button">
+						<i class="icons check mr-xs2"></i>
+						<p class="body-title1 fw-m">모두 아니오</p>
+					</a>
+				</div>
+
+				<div class="mt-l">
+					<p class="body-title1">1. 최근 3개월 이내, 의사로부터 진찰 또는 검사를 통하여 다음과 같은 의료행위를 받은 사실이 있습니까?</p>
+					<div class="flex gap-x-sm mt-m">
+						<a href="#none" class="bts line3 md flex-1 rounded-sm on" role="button" data-question="q1"
+							data-answer="no">아니오</a>
+						<a href="#none" class="bts line3 md flex-1 rounded-sm" role="button" data-question="q1"
+							data-answer="yes">네</a>
+					</div>
+					<div class="r-box-line1 mt-xs">
+						<div class="flex-items-center">
+							<i class="icons notice02 mr-xs2"></i>
+							<p class="txt-body1 fw-m">의료행위</p>
+						</div>
+						<p class="txt-body3 mt-xs2">· 질병확정진단, 치료, 입원, 수술 등</p>
+					</div>
+					<p class="txt-body3 body-clr1 mt-xs">* 감기나 코로나19 완치 후 추가 치료가 없었다면 "아니오"를 선택하세요</p>
+				</div>
+
+				<div class="mt-l">
+					<p class="body-title1">2. 최근 5년 이내, 아래 10대 질병으로 입원 또는 수술을 받은 사실이 있습니까?</p>
+					<div class="flex gap-x-sm mt-m">
+						<a href="#none" class="bts line3 md flex-1 rounded-sm on" role="button" data-question="q2"
+							data-answer="no">아니오</a>
+						<a href="#none" class="bts line3 md flex-1 rounded-sm" role="button" data-question="q2"
+							data-answer="yes">네</a>
+					</div>
+					<div class="r-box-line1 mt-xs">
+						<div class="flex-items-center">
+							<i class="icons notice03 mr-xs2"></i>
+							<p class="txt-body1 fw-m">10대 질병</p>
+						</div>
+						<p class="txt-body3 mt-xs2">· 암, 백혈병, 고혈압, 협심증, 심근경색, 심장판막증, 간경화증, 뇌졸중, 당뇨병, 에이즈 및 HIV보균</p>
+					</div>
+				</div>
+
+				<div class="mt-l">
+					<p class="body-title1">3. 보험가입일 기준, 피보험자가 해외에 체류 또는 거주 중입니까?</p>
+					<div class="flex gap-x-sm mt-m">
+						<a href="#none" class="bts line3 md flex-1 rounded-sm on" role="button" data-question="q3"
+							data-answer="no">아니오</a>
+						<a href="#none" class="bts line3 md flex-1 rounded-sm" role="button" data-question="q3"
+							data-answer="yes">네</a>
+					</div>
+					<p class="txt-body3 body-clr1 mt-xs">* 현재 KB손해보험 해외장기 체류보험에 가입 중인 경우 "아니오"를 선택하세요</p>
+				</div>
+
+				<div class="mt-l">
+					<p class="body-title1">4. 외국인, 이중국적자, 시민권자 또는 영주권자로서 해당 국가로 출국하십니까?</p>
+					<div class="flex gap-x-sm mt-m">
+						<a href="#none" class="bts line3 md flex-1 rounded-sm on" role="button" data-question="q4"
+							data-answer="no">아니오</a>
+						<a href="#none" class="bts line3 md flex-1 rounded-sm" role="button" data-question="q4"
+							data-answer="yes">네</a>
+					</div>
+				</div>
+
+				<div class="mt-l">
+					<p class="body-title1">5. 출국 사유가 워킹홀리데이, 우프(WWOOF), 또는 이민(초청 포함)인가요?</p>
+					<div class="flex gap-x-sm mt-m">
+						<a href="#none" class="bts line3 md flex-1 rounded-sm on" role="button" data-question="q5"
+							data-answer="no">아니오</a>
+						<a href="#none" class="bts line3 md flex-1 rounded-sm" role="button" data-question="q5"
+							data-answer="yes">네</a>
+					</div>
+				</div>
+
+				<div class="divider medium -mx-m mt-l"></div>
+
+				<div class="link-box">
+					<a href="#none" class="txt-body1 flex-between-center" role="button">
+						<span class="flex-center">
+							<i class="icons notice01 mr-xs"></i>
+							장애인 전용 보험 전환 특약
+						</span>
+
+
+						<i class="arow-b icons sm"></i>
+					</a>
+					<div class="content overflow-hidden transition" style="height:0px">
+						<div class="area">
+							<p class="txt-body2 pt-sm">장애인 전용 보험 전환 특약의 적용 대상과 전환 가능 여부를 확인하세요.</p>
+							<p class="txt-body2 mt-xs">
+								가입 이후에도 조건을 충족하면 관련 특약 전환 가능 여부를 안내받을 수 있습니다.
+							</p>
+							<div class="r-box-gray pd-sm mt-s">
+								<p class="list-body3">예시 : 장애인전용보험 전환 특약 신청 가능 여부 확인</p>
+								<p class="list-body3">예시 : 전환 시 필요한 제출 서류 및 유의사항 확인</p>
+							</div>
+						</div>
+					</div>
+					<div class="divider"></div>
+					<a href="#none" class="txt-body1 flex-between-center" role="button">
+						<span class="flex-center">
+							<i class="icons terms mr-xs"></i>
+							의료수급권자 안내
+						</span>
+						<i class="arow-b icons sm"></i>
+					</a>
+					<div class="content overflow-hidden transition" style="height:0px">
+						<div class="area">
+							<p class="txt-body2 pt-sm">의료수급권자의 가입 기준과 청약 시 확인이 필요한 사항을 안내합니다.</p>
+							<p class="txt-body2 mt-xs">
+								자격 유형에 따라 가입 조건이나 제출 서류가 달라질 수 있습니다.
+							</p>
+							<div class="r-box-gray pd-sm mt-s">
+								<p class="list-body3">예시 : 의료수급권자 자격 확인 서류 준비</p>
+								<p class="list-body3">예시 : 자격 변동 시 계약 변경 가능 여부 확인</p>
+							</div>
+						</div>
+					</div>
+					<div class="divider"></div>
+					<a href="#none" class="txt-body1 flex-between-center" role="button">
+						<span class="flex-center">
+							<i class="icons pencil mr-xs"></i>
+							보험금 대리 청구인 신청 안내
+						</span>
+						<i class="arow-b icons sm"></i>
+					</a>
+					<div class="content overflow-hidden transition" style="height:0px">
+						<div class="area">
+							<p class="txt-body2 pt-sm">보험금 대리 청구인을 미리 지정해 두면 청구 절차를 대신 진행할 수 있습니다.</p>
+							<p class="txt-body2 mt-xs">
+								신청 대상, 등록 방법, 해지 절차 등을 미리 확인해 주세요.
+							</p>
+							<div class="r-box-gray pd-sm mt-s">
+								<p class="list-body3">예시 : 가족을 대리 청구인으로 사전 지정</p>
+								<p class="list-body3">예시 : 신청 후 변경 또는 해지 절차 확인</p>
+							</div>
+						</div>
+					</div>
+					<div class="divider"></div>
+					<a href="#none" class="txt-body1 flex-between-center" role="button">
+						<span class="flex-center">
+							<i class="icons sale mr-xs"></i>
+							사망보험금 수익자 법정상속인 안내
+						</span>
+						<i class="arow-b icons sm"></i>
+					</a>
+					<div class="content overflow-hidden transition" style="height:0px">
+						<div class="area">
+							<p class="txt-body2 pt-sm">사망보험금 수익자를 지정하지 않은 경우 적용되는 기본 기준을 안내합니다.</p>
+							<p class="txt-body2 mt-xs">
+								수익자 지정 여부에 따라 보험금 청구 절차와 필요 서류가 달라질 수 있습니다.
+							</p>
+							<div class="r-box-gray pd-sm mt-s">
+								<p class="list-body3">예시 : 수익자 미지정 시 법정상속인 기준 적용</p>
+								<p class="list-body3">예시 : 수익자 변경 등록 필요 여부 확인</p>
+							</div>
+						</div>
+					</div>
+					<div class="divider"></div>
+					<a href="#none" class="txt-body1 flex-between-center" role="button">
+						<span>도움말</span>
+						<i class="arow-b icons sm"></i>
+					</a>
+					<div class="content overflow-hidden transition" style="height:0px">
+						<div class="area">
+							<p class="txt-body2 pt-sm">(샘플 안내 문구)</p>
+							<p class="txt-body2 mt-xs">
+								질문에 해당하는 이력이 있다면 사실대로 선택해 주세요.<br>
+								정확한 고지 내용에 따라 가입 가능 여부가 달라질 수 있습니다.
+							</p>
+							<div class="r-box-gray pd-sm mt-s">
+								<p class="list-body3">샘플1 : 해당 이력이 없으면 "아니오" 선택</p>
+								<p class="list-body3">샘플2 : 애매한 경우 상담 또는 추가 확인 진행</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script>
+		document.addEventListener('DOMContentLoaded', function () {
+			const answerButtons = document.querySelectorAll('[data-question]');
+			const selectAllNo = document.getElementById('selectAllNo');
+			const guideLinks = document.querySelectorAll('.link-box > a[role="button"]');
+
+			function syncSelectAllNo() {
+				const questions = ['q1', 'q2', 'q3', 'q4', 'q5'];
+				const isAllNo = questions.every(function (question) {
+					return document.querySelector('[data-question="' + question + '"].on[data-answer="no"]');
+				});
+
+				selectAllNo.classList.toggle('on', isAllNo);
+			}
+
+			answerButtons.forEach(function (button) {
+				button.addEventListener('click', function (e) {
+					e.preventDefault();
+
+					const question = this.getAttribute('data-question');
+					document.querySelectorAll('[data-question="' + question + '"]').forEach(function (item) {
+						item.classList.remove('on');
+					});
+
+					this.classList.add('on');
+					syncSelectAllNo();
+				});
+			});
+
+			selectAllNo.addEventListener('click', function (e) {
+				e.preventDefault();
+
+				document.querySelectorAll('[data-answer="no"]').forEach(function (button) {
+					button.classList.add('on');
+				});
+
+				document.querySelectorAll('[data-answer="yes"]').forEach(function (button) {
+					button.classList.remove('on');
+				});
+
+				syncSelectAllNo();
+			});
+
+			guideLinks.forEach(function (link) {
+				link.addEventListener('click', function (e) {
+					e.preventDefault();
+
+					const content = this.nextElementSibling;
+					if (!content || !content.classList.contains('content')) {
+						return;
+					}
+
+					const isOpen = content.style.height && content.style.height !== '0px';
+					content.style.height = isOpen ? '0px' : content.scrollHeight + 'px';
+				});
+			});
+
+			syncSelectAllNo();
+		});
+	</script>
+</body>
+
+</html>

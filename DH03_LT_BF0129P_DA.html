@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="ko" ng-app="app">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>다른 사업장 조사</title>
+	<link rel="stylesheet" href="assets/css/reset.css">
+	<link rel="stylesheet" href="assets/css/comn-form.css">
+	<link rel="stylesheet" href="assets/css/codex-ui.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+</head>
+
+<body class="codex-popup-body">
+	<div class="layer-dim codex-popup-dim"></div>
+	<div class="layer-wrap codex-popup-wrap codex-fade-in" import-css="['comn-form']" ng-controller="PopupCtrl">
+		<div class="layer-header codex-popup-header">
+			<div class="flex-between-top gap-x-xs">
+				<h1 class="layer-title codex-popup-title">다른 사업장 조사</h1>
+				<a href="#" ng-click="vm.popupClose('cancel')" class="btn-pop-close codex-pop-close" role="button">
+					<span class="hide_txt codex-hide-txt">레이어 닫기</span>
+				</a>
+			</div>
+		</div>
+
+		<div class="layer-content codex-popup-content">
+			<section class="question-block survey-question">
+				<p class="body-title1 fw-m">
+					1. 동일 방화구역
+					<span class="txt-caption1 caption-clr fw-m">(같은 건물·층)</span>
+					에 다른 사업장이 있나요?
+				</p>
+
+				<div class="flex gap-x-xs my-sm2">
+					<a href="#" role="button"
+						class="bts line3 md flex-1 rounded-sm answer-button survey-answer {{vm.existNbBzYn == 'N' ? 'on' : ''}}"
+						ng-click="vm.selExistNbBz('N')">아니오
+						<span class="hide_txt">{{vm.existNbBzYn == 'N' ? '선택됨' : '선택해제됨'}}</span>
+					</a>
+					<a href="#" role="button"
+						class="bts line3 md flex-1 rounded-sm answer-button survey-answer {{vm.existNbBzYn == 'Y' ? 'on' : ''}}"
+						ng-click="vm.selExistNbBz('Y')">네
+						<span class="hide_txt">{{vm.existNbBzYn == 'Y' ? '선택됨' : '선택해제됨'}}</span>
+					</a>
+				</div>
+
+				<div class="r-box-line1">
+					<p class="list-body2">동일 방화구역 안에 있는 다른 사업장을 모두 선택해 주세요.</p>
+					<p class="list-body2">다른 사업장의 종류에 따라 적용되는 보험료가 달라질 수 있습니다.</p>
+				</div>
+
+				<div class="mt-s">
+					<a href="#" role="button" class="bts line3-round body-clr2" ng-click="vm.openInfo()">
+						<i class="tooltip-gray icons sm mr-xs2"></i>동일방화구역이란?
+					</a>
+				</div>
+			</section>
+
+			<section class="question-block survey-question" ng-show="vm.existNbBzYn == 'N'">
+				<p class="body-title1 fw-m mt-md2">2. 한 층을 단독으로 사용하시나요?</p>
+
+				<div class="flex gap-x-xs mt-sm2">
+					<a href="#" role="button"
+						class="bts line3 md flex-1 rounded-sm answer-button survey-answer {{vm.useOneFloorYn == 'N' ? 'on' : ''}}"
+						ng-click="vm.selUseOneFloor('N')">아니오
+						<span class="hide_txt">{{vm.useOneFloorYn == 'N' ? '선택됨' : '선택해제됨'}}</span>
+					</a>
+					<a href="#" role="button"
+						class="bts line3 md flex-1 rounded-sm answer-button survey-answer {{vm.useOneFloorYn == 'Y' ? 'on' : ''}}"
+						ng-click="vm.selUseOneFloor('Y')">네
+						<span class="hide_txt">{{vm.useOneFloorYn == 'Y' ? '선택됨' : '선택해제됨'}}</span>
+					</a>
+				</div>
+			</section>
+		</div>
+
+		<div class="layer-cta codex-popup-cta">
+			<div class="flex-items-center gap-x-xs">
+				<a href="#" id="pop_bf0129P" role="button"
+					class="bts-cta {{vm.canSubmit() ? '' : 'disabled'}}"
+					ng-click="vm.popupClose('confirm')">다음</a>
+			</div>
+		</div>
+	</div>
+
+
+	<script>
+		angular.module('app', [])
+			.controller('PopupCtrl', ['$scope', function ($scope) {
+				$scope.vm = {
+					existNbBzYn: null,
+					useOneFloorYn: null,
+					selExistNbBz: function (value) {
+						$scope.vm.existNbBzYn = value;
+						if (value !== 'N') {
+							$scope.vm.useOneFloorYn = null;
+						}
+					},
+					selUseOneFloor: function (value) {
+						$scope.vm.useOneFloorYn = value;
+					},
+					canSubmit: function () {
+						if ($scope.vm.existNbBzYn === 'Y') {
+							return true;
+						}
+						if ($scope.vm.existNbBzYn === 'N' && $scope.vm.useOneFloorYn) {
+							return true;
+						}
+						return false;
+					},
+					openInfo: function () {
+						window.alert('동일 방화구역은 같은 건물 또는 같은 층 안에서 화재 확산 위험을 함께 보는 구역입니다.');
+					},
+					popupClose: function (type) {
+						if (type === 'confirm' && !$scope.vm.canSubmit()) {
+							return;
+						}
+
+						if (type === 'confirm' && window.opener && window.opener.selectOtherBusinessSurvey) {
+							window.opener.selectOtherBusinessSurvey({
+								existNbBzYn: $scope.vm.existNbBzYn,
+								useOneFloorYn: $scope.vm.useOneFloorYn
+							});
+						}
+
+						if (window.close) {
+							window.close();
+						}
+					}
+				};
+			}]);
+
+		document.addEventListener('DOMContentLoaded', function () {
+			const answerButtons = document.querySelectorAll('.answer-button');
+			const existButtons = document.querySelectorAll('[ng-click^="vm.selExistNbBz"]');
+			const floorButtons = document.querySelectorAll('[ng-click^="vm.selUseOneFloor"]');
+			const secondQuestion = document.querySelector('[ng-show="vm.existNbBzYn == \'N\'"]');
+			const confirmButton = document.getElementById('pop_bf0129P');
+			const closeButton = document.querySelector('.btn-pop-close');
+			const infoButton = document.querySelector('[ng-click="vm.openInfo()"]');
+
+			let state = {
+				existNbBzYn: null,
+				useOneFloorYn: null
+			};
+
+			function canSubmit() {
+				if (state.existNbBzYn === 'Y') {
+					return true;
+				}
+				return state.existNbBzYn === 'N' && !!state.useOneFloorYn;
+			}
+
+			function syncUI() {
+				answerButtons.forEach((button) => {
+					const isExistButton = button.getAttribute('ng-click').indexOf('selExistNbBz') > -1;
+					const value = button.textContent.trim().startsWith('아니오') ? 'N' : 'Y';
+					const selected = isExistButton ? state.existNbBzYn === value : state.useOneFloorYn === value;
+					button.classList.toggle('on', selected);
+				});
+
+				if (secondQuestion) {
+					secondQuestion.style.display = state.existNbBzYn === 'N' ? '' : 'none';
+				}
+
+				if (confirmButton) {
+					confirmButton.classList.toggle('disabled', !canSubmit());
+				}
+			}
+
+			existButtons.forEach((button) => {
+				button.addEventListener('click', function (e) {
+					e.preventDefault();
+					state.existNbBzYn = this.textContent.trim().startsWith('아니오') ? 'N' : 'Y';
+					if (state.existNbBzYn !== 'N') {
+						state.useOneFloorYn = null;
+					}
+					syncUI();
+				});
+			});
+
+			floorButtons.forEach((button) => {
+				button.addEventListener('click', function (e) {
+					e.preventDefault();
+					state.useOneFloorYn = this.textContent.trim().startsWith('아니오') ? 'N' : 'Y';
+					syncUI();
+				});
+			});
+
+			if (closeButton) {
+				closeButton.addEventListener('click', function (e) {
+					e.preventDefault();
+					window.close();
+				});
+			}
+
+			if (infoButton) {
+				infoButton.addEventListener('click', function (e) {
+					e.preventDefault();
+					window.alert('동일 방화구역은 같은 건물 또는 같은 층 안에서 화재 확산 위험을 함께 보는 구역입니다.');
+				});
+			}
+
+			if (confirmButton) {
+				confirmButton.addEventListener('click', function (e) {
+					if (!canSubmit()) {
+						e.preventDefault();
+						return;
+					}
+
+					if (window.opener && window.opener.selectOtherBusinessSurvey) {
+						window.opener.selectOtherBusinessSurvey(state);
+					}
+				});
+			}
+
+			syncUI();
+		});
+	</script>
+</body>
+
+</html>

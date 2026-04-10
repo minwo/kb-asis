@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="assets/css/reset.css">
+	<link rel="stylesheet" href="assets/css/comn-form.css">
+</head>
+
+<body>
+	<div id="container" style="padding-top:50px;" import-css="['comn-form']" class="ng-scope ng-isolate-scope">
+		<div id="content" class="cm-lt-wrapper2 animate-opacity change-loaded">
+			<div>
+				<div class="flex-between-center">
+					<h3 class="sub-title1">의무보험 대상 선택</h3>
+					<a href="#none" role="button" class="bts line3-round" ng-click="vm.getHistory()"><i
+							class="icons calc02 sm mr-xs2"></i>최근 계산 이어하기</a>
+				</div>
+
+				<div class="mt-m">
+					<a href="#none" class="r-box-line1 flex-center py-sm " role="button"
+						ng-click="vm.obgtNtrCk('noObgt')">
+						<i class="icons biz-fire01 l"></i>
+						<div class="flex-grow ml-xs">
+							<p class="body-title1 fw-m">의무가입 대상 아님</p>
+							<p class="txt-caption1 mt-xs3">
+								의무보험 가입 완료했거나,<br>
+								아래 유형에 해당하지 않는 경우
+							</p>
+						</div>
+						<i class="icons check"></i>
+					</a>
+					<div class="r-box-line1 mt-xs min-h-96 ">
+						<a href="#none" class="flex-center" role="button" ng-click="vm.obgtNtrCk('mustr')">
+							<i class="icons biz-fire02 l"></i>
+							<div class="flex-grow ml-xs">
+								<p class="body-title1 fw-m">다중이용업소 화재배상책임 대상</p>
+								<p class="txt-caption1 mt-xs3">
+									관할 소방서로부터 안내받은 경우
+								</p>
+							</div>
+							<i class="icons check"></i>
+						</a>
+
+						<div ng-show="vm.planType == 'mustr' &amp;&amp; vm.seq != ''" aria-hidden="true"
+							class="ng-hide">
+							<div class="divider spacing-s"></div>
+							<p class="txt-body3">사업장 일련번호</p>
+							<div class="flex-center">
+								<p class="txt-body1 fm-w mr-xs2">MU</p>
+								<p class="flex-grow body-title1 fm-w ng-binding"></p>
+								<a href="#none" class="bts line3-round sm bg-white" role="button"
+									ng-click="vm.searchObgtNtrPopup('mustr')">수정</a>
+							</div>
+						</div>
+					</div>
+					<div class="r-box-line1 mt-xs min-h-96 ">
+						<a href="#none" class="flex-center" role="button" ng-click="vm.obgtNtrCk('dsil')">
+							<i class="icons biz-fire03 l"></i>
+							<div class="flex-grow ml-xs">
+								<p class="body-title1 fw-m">재난배상책임 대상</p>
+								<p class="txt-caption1 mt-xs3">
+									시군구청으로부터 안내받은 경우
+								</p>
+							</div>
+							<i class="icons check"></i>
+						</a>
+						<div ng-show="vm.planType == 'dsil' &amp;&amp; vm.seq != ''" aria-hidden="true" class="ng-hide">
+							<div class="divider spacing-s"></div>
+							<p class="txt-body3">사업장 일련번호</p>
+							<div class="flex-center">
+								<p class="txt-body1 fm-w mr-xs2">C</p>
+								<p class="flex-grow body-title1 fm-w ng-binding"></p>
+								<a href="#none" class="bts line3-round sm bg-white" role="button"
+									ng-click="vm.searchObgtNtrPopup('dsil')">수정</a>
+							</div>
+						</div>
+					</div>
+					<div class="r-box-line1 mt-xs">
+						<a href="#none" class="flex-center" role="button" ng-click="vm.popupOpen()">
+							<div class="flex-grow ml-xs">
+								<p class="body-title1 fw-m">잘 모르겠어요</p>
+							</div>
+							<i class="icons check"></i>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<link type="text/css" rel="stylesheet" id="comn-form" href="/dctapp/css/comn-form_DA.css?date=1775536935362">
+	</div>
+</body>
+
+</html>
