@@ -1,0 +1,809 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>컴포넌트 컬렉션</title>
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/comn-form.css">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .collection-content {
+            padding-right: 204px !important;
+        }
+
+        .collection-quick-menu {
+            position: fixed;
+            top: 120px;
+            right: 24px;
+            z-index: 20;
+            width: 156px;
+            padding: 16px;
+            border: var(--border-line1);
+            border-radius: var(--rounded-md2);
+            background: var(--background-white);
+            box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.08);
+            box-sizing: border-box;
+        }
+
+        .collection-quick-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        .collection-quick-toggle {
+            display: none;
+        }
+
+        .collection-quick-menu .bts {
+            width: 100%;
+        }
+
+        .collection-quick-menu .bts+.bts {
+            margin-top: 4px;
+        }
+
+        .collection-quick-link.on {
+            border-color: var(--background-body1);
+            background: var(--background-body1);
+            color: var(--text-white);
+        }
+
+        [id^="component-"] {
+            scroll-margin-top: 112px;
+        }
+
+        @media (max-width: 1280px) {
+            .collection-content {
+                padding-right: 24px !important;
+            }
+
+            .collection-quick-menu {
+                position: sticky;
+                top: 16px;
+                width: auto;
+                margin-top: 24px;
+                padding: 12px;
+                border-radius: var(--rounded-lg);
+                box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.08);
+            }
+
+            .collection-quick-list {
+                display: none;
+                padding-bottom: 4px;
+                overflow-x: auto;
+                white-space: nowrap;
+                gap: 8px;
+                scrollbar-width: none;
+                -ms-overflow-style: none;
+            }
+
+            .collection-quick-list::-webkit-scrollbar {
+                display: none;
+            }
+
+            .collection-quick-menu.is-open .collection-quick-list {
+                display: flex;
+                align-items: center;
+            }
+
+            .collection-quick-menu .bts {
+                width: auto;
+                min-width: max-content;
+                flex: 0 0 auto;
+                padding-inline: 16px;
+            }
+
+            .collection-quick-menu .bts+.bts {
+                margin-top: 0;
+            }
+
+            .collection-quick-toggle {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                width: 40px;
+                height: 40px;
+                border: var(--border-line1);
+                border-radius: 999px;
+                background: var(--background-white);
+                box-sizing: border-box;
+                cursor: pointer;
+            }
+
+            .collection-quick-toggle-icon {
+                position: relative;
+                width: 18px;
+                height: 12px;
+            }
+
+            .collection-quick-toggle-icon::before,
+            .collection-quick-toggle-icon::after,
+            .collection-quick-toggle-icon span {
+                content: "";
+                position: absolute;
+                left: 0;
+                width: 18px;
+                height: 2px;
+                border-radius: 999px;
+                background: var(--text-body1);
+                transition: transform 0.2s ease, opacity 0.2s ease, top 0.2s ease;
+            }
+
+            .collection-quick-toggle-icon::before {
+                top: 0;
+            }
+
+            .collection-quick-toggle-icon span {
+                top: 5px;
+            }
+
+            .collection-quick-toggle-icon::after {
+                top: 10px;
+            }
+
+            .collection-quick-menu.is-open .collection-quick-toggle-icon::before {
+                top: 5px;
+                transform: rotate(45deg);
+            }
+
+            .collection-quick-menu.is-open .collection-quick-toggle-icon span {
+                opacity: 0;
+            }
+
+            .collection-quick-menu.is-open .collection-quick-toggle-icon::after {
+                top: 5px;
+                transform: rotate(-45deg);
+            }
+
+            [id^="component-"] {
+                scroll-margin-top: 144px;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-white">
+    <div class="collection-content px-md pt-md pb-lg">
+        <div>
+            <h1 class="sub-title1">컴포넌트 컬렉션</h1>
+            <p class="txt-body3 mt-xs2">현재 HTML에서 반복 사용한 요소만 정리했습니다. 중복되는 형태는 제외하고 대표 조합만 모았습니다.</p>
+        </div>
+
+        <nav class="collection-quick-menu">
+            <div class="collection-quick-head">
+                <p class="txt-body1 fw-m">Category</p>
+                <button type="button" class="collection-quick-toggle" aria-expanded="false"
+                    aria-controls="collectionQuickList" aria-label="카테고리 메뉴 열기">
+                    <span class="collection-quick-toggle-icon"><span></span></span>
+                </button>
+            </div>
+            <div id="collectionQuickList" class="collection-quick-list mt-sm">
+                <a href="#component-text" class="collection-quick-link bts line3 xs rounded-sm on" role="button"
+                    aria-current="true">Text</a>
+                <a href="#component-list" class="collection-quick-link bts line3 xs rounded-sm" role="button">List</a>
+                <a href="#component-badge" class="collection-quick-link bts line3 xs rounded-sm" role="button">Badge</a>
+                <a href="#component-button" class="collection-quick-link bts line3 xs rounded-sm"
+                    role="button">Button</a>
+                <a href="#component-box" class="collection-quick-link bts line3 xs rounded-sm" role="button">Box</a>
+                <a href="#component-row" class="collection-quick-link bts line3 xs rounded-sm" role="button">Row</a>
+                <a href="#component-table" class="collection-quick-link bts line3 xs rounded-sm" role="button">Table</a>
+                <a href="#component-form" class="collection-quick-link bts line3 xs rounded-sm" role="button">Form</a>
+                <a href="#component-tabs" class="collection-quick-link bts line3 xs rounded-sm" role="button">Tabs</a>
+                <a href="#component-link" class="collection-quick-link bts line3 xs rounded-sm" role="button">Link</a>
+                <a href="#component-template" class="collection-quick-link bts line3 xs rounded-sm"
+                    role="button">Template</a>
+                <a href="#component-spacing" class="collection-quick-link bts line3 xs rounded-sm"
+                    role="button">Spacing</a>
+                <a href="#component-divider" class="collection-quick-link bts line3 xs rounded-sm"
+                    role="button">Divider</a>
+            </div>
+        </nav>
+
+        <div class="divider medium -mx-m mt-l"></div>
+
+        <div>
+            <h2 id="component-text" class="body-title1">Text</h2>
+            <div class="r-box-line1 mt-sm">
+                <p class="title-headline1">title-headline1</p>
+                <p class="title-headline2 mt-sm2">title-headline2</p>
+                <p class="title-headline3 mt-sm2">title-headline3</p>
+                <p class="title-headline4 mt-sm2">title-headline4</p>
+                <p class="sub-title1">sub-title1</p>
+                <p class="sub-title2 mt-sm2">sub-title2</p>
+                <p class="sub-title3 mt-sm2">sub-title3</p>
+                <p class="body-title1 mt-sm2">body-title1</p>
+                <p class="body-title1 sys-clr3 mt-sm2">body-title1 + sys-clr3</p>
+                <p class="body-title2 mt-sm2">body-title2</p>
+                <p class="body-title3 mt-sm2">body-title3</p>
+                <p class="txt-body1 mt-sm2">txt-body1 기본 본문 텍스트입니다.</p>
+                <p class="txt-body1 body-clr1 mt-sm2">txt-body1 + body-clr1</p>
+                <p class="txt-body2 mt-sm2">txt-body2 보조 설명 텍스트입니다.</p>
+                <p class="txt-body2 body-clr2 mt-sm2">txt-body2 + body-clr2</p>
+                <p class="txt-body3 mt-sm2">txt-body3 안내성 문구에 자주 쓰는 텍스트입니다.</p>
+                <p class="txt-caption1 mt-sm2">txt-caption1 보조 캡션 텍스트</p>
+                <p class="txt-caption2 mt-sm2">txt-caption2 보조 캡션 텍스트</p>
+                <p class="txt-caption2-compact mt-sm2">txt-caption2-compact 보조 캡션 텍스트</p>
+                <p class="txt-caption3 mt-sm2">txt-caption3 약관/준법 문구용 캡션</p>
+                <p class="caption-medium2-compact mt-sm2">caption-medium2-compact</p>
+            </div>
+        </div>
+
+        <div class="divider mt-l"></div>
+
+        <div>
+            <h2 id="component-list" class="body-title1">List</h2>
+            <div class="r-box-line1 mt-sm">
+                <p class="list-body2">list-body2 기본 목록 문구</p>
+                <p class="list-body2">보장 범위나 조건 안내에 사용하는 중간 크기 목록</p>
+                <div class="mt-sm">
+                    <p class="list-body3">list-body3 보조 목록 문구</p>
+                    <p class="list-body3">팝업 안내나 세부 설명에 사용하는 작은 목록</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="divider mt-l"></div>
+
+        <div>
+            <h2 id="component-badge" class="body-title1">Badge</h2>
+            <div class="r-box-line1 mt-sm">
+                <div class="flex-items-center gap-x-xs">
+                    <i class="marker">기본</i>
+                    <i class="marker rounded">rounded</i>
+                    <i class="marker bg01">bg01</i>
+                    <i class="marker bg02">bg02</i>
+                    <i class="marker bg03">bg03</i>
+                    <i class="marker bg04">bg04</i>
+                    <i class="marker bg05">bg05</i>
+                    <i class="marker bg06">bg06</i>
+                    <i class="marker bg07">bg07</i>
+                </div>
+                <div class="flex-items-center gap-x-xs mt-sm">
+                    <i class="marker-box">기본</i>
+                    <i class="marker-box bg01">강조</i>
+                    <i class="marker-box bg02">보라</i>
+                    <i class="marker-box bg03">블루</i>
+                    <i class="marker-box bg04">퍼플</i>
+                    <i class="marker-box bg05">안내</i>
+                    <i class="marker-box bg06">그린</i>
+                    <i class="marker-box bg07">테이블</i>
+                    <i class="marker-box bg08">혜택</i>
+                </div>
+                <div class="flex-items-center gap-x-xs mt-sm">
+                    <span class="label-box bg01">Yellow</span>
+                    <span class="label-box bg02">Navy</span>
+                    <span class="label-box bg03">Blue</span>
+                    <span class="label-box bg04">Green</span>
+                    <span class="label-box bg05">Purple</span>
+                    <span class="label-box bg06">Salmon</span>
+                    <span class="label-box bg07">Orange</span>
+                    <span class="label-box bg08">Gray1</span>
+                    <span class="label-box bg09">Gray2</span>
+                </div>
+                <div class="flex-items-center gap-x-xs mt-sm">
+                    <span class="label-number">1</span>
+                    <span class="label-number bg01">2</span>
+                    <span class="label-number bg02">2</span>
+                    <span class="number-round">3</span>
+                </div>
+                <div class="flex-items-center gap-x-xs mt-sm">
+                    <i class="label yellow">i.label.yellow</i>
+                </div>
+                <div class="flex-items-center gap-x-xs mt-sm">
+                    <i class="cmp-chip rat">안심</i>
+                    <i class="cmp-chip rat02">다소안심</i>
+                    <i class="cmp-chip rat03">보통</i>
+                    <i class="cmp-chip rat04">신중</i>
+                    <i class="cmp-chip rat05">주의</i>
+                </div>
+            </div>
+        </div>
+
+        <div class="divider mt-l"></div>
+
+        <div>
+            <h2 id="component-button" class="body-title1">Button</h2>
+            <div class="r-box-line1 mt-sm">
+                <div class="flex gap-x-xs">
+                    <a href="#none" class="bts line3 md flex-1 rounded-sm" role="button">아니오</a>
+                    <a href="#none" class="bts line3 md flex-1 rounded-sm on" role="button">네</a>
+                </div>
+                <div class="flex gap-x-xs mt-sm">
+                    <a href="#none" class="bts line3-round md white flex-1" role="button">공유하기</a>
+                    <a href="#none" class="bts md gray flex-1 rounded-sm" role="button">보조 버튼</a>
+                </div>
+                <div class="flex gap-x-xs mt-sm">
+                    <a href="#none" class="bts md yellow flex-1 rounded-sm" role="button">yellow</a>
+                    <a href="#none" class="bts md bg-body1 flex-1 rounded-sm" role="button">bg-body1</a>
+                </div>
+                <div class="flex gap-x-xs mt-sm">
+                    <a href="#none" class="bts-cta gray" role="button">이전</a>
+                    <a href="#none" class="bts-cta" role="button">다음</a>
+                </div>
+                <div class="flex gap-x-xs mt-sm">
+                    <a href="#none" class="bts-cta navy" role="button">navy</a>
+                    <a href="#none" class="bts-cta disabled" role="button">disabled</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="divider mt-l"></div>
+
+        <div>
+            <h2 id="component-box" class="body-title1">Box</h2>
+            <div class="r-box-gray mt-sm">
+                <p class="txt-body1 fw-m">r-box-gray</p>
+                <p class="txt-body3 mt-xs2">요약 정보, 혜택 안내, 계산 정보 등에 자주 사용하는 회색 박스입니다.</p>
+            </div>
+            <div class="r-box-line1 mt-sm">
+                <p class="txt-body1 fw-m">r-box-line1</p>
+                <p class="txt-body3 mt-xs2">안내 박스, 선택 영역, 상세 설명 영역에 자주 사용하는 라인 박스입니다.</p>
+            </div>
+            <div class="r-box-line1 on mt-sm">
+                <p class="txt-body1 fw-m">r-box-line1 on</p>
+                <p class="txt-body3 mt-xs2">선택 상태를 표현할 때 사용하는 활성 박스입니다.</p>
+            </div>
+        </div>
+
+        <div class="divider mt-l"></div>
+
+        <div>
+            <h2 id="component-row" class="body-title1">Row</h2>
+            <div class="r-box-line1 mt-sm">
+                <div class="data-row">
+                    <p class="label">보험기간</p>
+                    <p class="value">10년, 15년, 20년</p>
+                </div>
+                <div class="data-row">
+                    <p class="label">납입기간</p>
+                    <p class="value">10년, 15년, 20년</p>
+                </div>
+                <div class="divider spacing-s"></div>
+                <div class="flex-items-center mt-s">
+                    <div class="flex-1">
+                        <p class="txt-body1">자동차사고 변호사 선임비용 손해</p>
+                        <p class="txt-body3 body-clr2 mt-xs2">심급별, 자기부담금 50%</p>
+                    </div>
+                    <p class="body-title2">1억원</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="divider mt-l"></div>
+
+        <div>
+            <h2 id="component-table" class="body-title1">Table</h2>
+            <table class="cm-table mt-sm">
+                <caption>보장 항목 예시 테이블</caption>
+                <colgroup>
+                    <col style="width:50%">
+                    <col style="width:50%">
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th>
+                            <p class="body-title2">항목</p>
+                        </th>
+                        <th>
+                            <p class="body-title2">내용</p>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <p class="body-title3 body-clr1">보험기간</p>
+                        </td>
+                        <td>
+                            <p class="body-title3 body-clr1">10년, 15년, 20년</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p class="body-title3 body-clr1">납입기간</p>
+                        </td>
+                        <td>
+                            <p class="body-title3 body-clr1">10년, 15년, 20년</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p class="body-title3 body-clr1">가입나이</p>
+                        </td>
+                        <td>
+                            <p class="body-title3 body-clr1">만 19세 ~ 보험나이 70세</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <table class="cm-table mt-sm">
+                <caption>강조형 테이블 예시</caption>
+                <colgroup>
+                    <col style="width:34%">
+                    <col style="width:33%">
+                    <col style="width:33%">
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th>
+                            <p class="body-title2">항목</p>
+                        </th>
+                        <th class="type02">
+                            <p class="plan-tit">기본형</p>
+                            <p class="plan-value">10만원</p>
+                        </th>
+                        <th class="type03">
+                            <p class="plan-tit">추천형</p>
+                            <p class="plan-value">15만원</p>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <p class="body-title3 body-clr1">보장금액</p>
+                        </td>
+                        <td class="type02">1억원</td>
+                        <td class="type03">2억원</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="divider mt-l"></div>
+
+        <div>
+            <h2 id="component-form" class="body-title1">Form</h2>
+            <div class="r-box-line1 mt-sm">
+                <p class="txt-body1 fw-m">Form Template</p>
+                <div class="divider spacing-s"></div>
+                <div class="form-wrapper">
+                    <label for="componentCategory" class="txt-body3">사업장 업종</label>
+                    <div class="mt-xs2">
+                        <button type="button" id="componentCategory" class="ip-select w-full">선택</button>
+                    </div>
+                </div>
+                <div class="divider"></div>
+                <div class="form-wrapper">
+                    <label for="componentStoreName" class="txt-body3">상호명</label>
+                    <div>
+                        <input type="text" id="componentStoreName" class="ip-plaintxt" placeholder="2글자 이상 입력">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-wrapper single mt-sm">
+                <p class="txt-body1 fw-m mb-xs">Unit Input Template</p>
+                <label for="componentPrice" class="txt-body3">가입금액</label>
+                <div class="flex-between-center">
+                    <div class="flex-1">
+                        <input type="tel" id="componentPrice" class="ip-plaintxt" placeholder="금액 입력">
+                    </div>
+                    <span class="endfix">만원</span>
+                </div>
+            </div>
+
+            <div class="r-box-line1 mt-sm">
+                <p class="txt-body1 fw-m mb-xs">Checkbox Template</p>
+                <span class="cm-checkbox on">
+                    <input type="checkbox" id="componentCheck" checked>
+                    <label for="componentCheck">
+                        <span class="check"></span>
+                        <span class="txt-body1">동의합니다</span>
+                    </label>
+                </span>
+            </div>
+        </div>
+
+        <div class="divider mt-l"></div>
+
+        <div>
+            <h2 id="component-tabs" class="body-title1">Tabs</h2>
+            <div class="r-box-line1 mt-sm">
+                <div class="tabs-fill-group">
+                    <div class="tabs-items">
+                        <a href="#none" class="tab on" role="button">자동차보험</a>
+                        <a href="#none" class="tab" role="button">운전자보험</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="divider mt-l"></div>
+
+        <div>
+            <h2 id="component-link" class="body-title1">Link</h2>
+            <div class="link-box mt-sm">
+                <a href="#none" class="txt-body1 flex-between-center" role="button">
+                    <span class="flex-center">
+                        <i class="icons notice01 mr-xs"></i>
+                        가입 안내
+                    </span>
+                    <i class="arow-b icons sm"></i>
+                </a>
+                <div class="divider"></div>
+                <a href="#none" class="txt-body1 flex-between-center" role="button">
+                    <span class="flex-center">
+                        <i class="icons terms mr-xs"></i>
+                        보장 안내
+                    </span>
+                    <i class="arow-r icons s"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="divider mt-l"></div>
+
+        <div>
+            <h2 id="component-template" class="body-title1">Template</h2>
+            <div class="r-box-line1 mt-sm">
+                <p class="txt-body1 fw-m">Select Button Template</p>
+                <div class="flex gap-x-xs mt-sm">
+                    <a href="#none" class="bts line3 md flex-1 rounded-sm" role="button">아니오</a>
+                    <a href="#none" class="bts line3 md flex-1 rounded-sm on" role="button">네</a>
+                </div>
+            </div>
+
+            <div class="r-box-line1 mt-sm">
+                <p class="txt-body1 fw-m">CTA Template</p>
+                <div class="flex-items-center gap-x-xs mt-sm">
+                    <a href="#none" class="bts-cta gray" role="button">이전</a>
+                    <a href="#none" class="bts-cta" role="button">다음</a>
+                </div>
+            </div>
+
+            <div class="r-box-line1 mt-sm">
+                <p class="txt-body1 fw-m">Info Table Template</p>
+                <table class="cm-table mt-sm">
+                    <caption>템플릿 테이블</caption>
+                    <colgroup>
+                        <col style="width:50%">
+                        <col style="width:50%">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th>
+                                <p class="body-title2">항목</p>
+                            </th>
+                            <th>
+                                <p class="body-title2">내용</p>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <p class="body-title3 body-clr1">보험기간</p>
+                            </td>
+                            <td>
+                                <p class="body-title3 body-clr1">10년, 15년, 20년</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="divider mt-l"></div>
+
+        <div>
+            <h2 id="component-spacing" class="body-title1">Spacing</h2>
+            <div class="r-box-line1 mt-sm">
+                <p class="txt-body1 fw-m">Margin Top</p>
+                <div class="r-box-gray mt-xs2">
+                    <p class="txt-body2">mt-xs2</p>
+                </div>
+                <div class="r-box-gray mt-sm2">
+                    <p class="txt-body2">mt-sm2</p>
+                </div>
+                <div class="r-box-gray mt-sm">
+                    <p class="txt-body2">mt-sm</p>
+                </div>
+                <div class="r-box-gray mt-m">
+                    <p class="txt-body2">mt-m</p>
+                </div>
+                <div class="r-box-gray mt-l">
+                    <p class="txt-body2">mt-l</p>
+                </div>
+
+                <div class="divider spacing-s"></div>
+
+                <p class="txt-body1 fw-m">Padding</p>
+                <div class="r-box-gray pd-sm2 mt-sm">
+                    <p class="txt-body2">pd-sm2</p>
+                </div>
+                <div class="r-box-gray pd-sm mt-sm">
+                    <p class="txt-body2">pd-sm</p>
+                </div>
+                <div class="r-box-gray pd-md mt-sm">
+                    <p class="txt-body2">pd-md</p>
+                </div>
+
+                <div class="divider spacing-s"></div>
+
+                <p class="txt-body1 fw-m">Gap</p>
+                <div class="flex-items-center gap-x-xs mt-sm">
+                    <span class="label-box bg08">gap-x-xs</span>
+                    <span class="label-box bg08">8px</span>
+                    <span class="label-box bg08">sample</span>
+                </div>
+                <div class="flex-items-center gap-x-s mt-sm">
+                    <span class="label-box bg08">gap-x-s</span>
+                    <span class="label-box bg08">12px</span>
+                    <span class="label-box bg08">sample</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="divider mt-l"></div>
+
+        <div>
+            <h2 id="component-divider" class="body-title1">Divider</h2>
+            <div class="r-box-line1 mt-sm">
+                <p class="txt-body1">기본 divider 아래 spacing 예시</p>
+                <div class="divider spacing-xs"></div>
+                <p class="txt-body2">divider spacing-xs</p>
+                <div class="divider spacing-s"></div>
+                <p class="txt-body2">divider spacing-s</p>
+                <div class="divider spacing-m2"></div>
+                <p class="txt-body2">divider spacing-m2</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const quickMenu = document.querySelector('.collection-quick-menu');
+            const quickToggle = document.querySelector('.collection-quick-toggle');
+            const quickList = document.querySelector('.collection-quick-list');
+            const quickLinks = Array.from(document.querySelectorAll('.collection-quick-link'));
+            const sectionItems = quickLinks
+                .map(function (link) {
+                    const section = document.querySelector(link.getAttribute('href'));
+
+                    if (!section) {
+                        return null;
+                    }
+
+                    return {
+                        link: link,
+                        section: section
+                    };
+                })
+                .filter(Boolean);
+            const mobileMediaQuery = window.matchMedia('(max-width: 1280px)');
+            let scrollTicking = false;
+
+            if (!quickMenu || !quickList || quickLinks.length === 0 || sectionItems.length === 0) {
+                return;
+            }
+
+            function setMenuOpen(isOpen) {
+                if (!quickToggle) {
+                    return;
+                }
+
+                quickMenu.classList.toggle('is-open', isOpen);
+                quickToggle.setAttribute('aria-expanded', String(isOpen));
+                quickToggle.setAttribute('aria-label', isOpen ? '카테고리 메뉴 닫기' : '카테고리 메뉴 열기');
+            }
+
+            function syncMenuMode() {
+                if (!mobileMediaQuery.matches) {
+                    quickMenu.classList.remove('is-open');
+                    if (quickToggle) {
+                        quickToggle.setAttribute('aria-expanded', 'false');
+                        quickToggle.setAttribute('aria-label', '카테고리 메뉴 열기');
+                    }
+                    return;
+                }
+
+                setMenuOpen(false);
+            }
+
+            function centerQuickLink(link) {
+                if (!mobileMediaQuery.matches || !link || !quickMenu.classList.contains('is-open')) {
+                    return;
+                }
+
+                const targetScrollLeft = link.offsetLeft - (quickList.clientWidth / 2) + (link.clientWidth / 2);
+
+                quickList.scrollTo({
+                    left: Math.max(0, targetScrollLeft),
+                    behavior: 'smooth'
+                });
+            }
+
+            function setActiveLink(activeId) {
+                let activeLink = null;
+
+                quickLinks.forEach(function (link) {
+                    const isActive = link.getAttribute('href') === '#' + activeId;
+                    link.classList.toggle('on', isActive);
+                    if (isActive) {
+                        link.setAttribute('aria-current', 'true');
+                        activeLink = link;
+                    } else {
+                        link.removeAttribute('aria-current');
+                    }
+                });
+
+                centerQuickLink(activeLink);
+            }
+
+            function getActiveSectionId() {
+                const activationOffset = mobileMediaQuery.matches ? 180 : 140;
+                const activationY = window.scrollY + activationOffset;
+                let activeSectionId = sectionItems[0].section.id;
+
+                sectionItems.forEach(function (item) {
+                    const sectionTop = window.scrollY + item.section.getBoundingClientRect().top;
+
+                    if (sectionTop <= activationY) {
+                        activeSectionId = item.section.id;
+                    }
+                });
+
+                return activeSectionId;
+            }
+
+            function syncActiveLinkToScroll() {
+                setActiveLink(getActiveSectionId());
+                scrollTicking = false;
+            }
+
+            function requestActiveSync() {
+                if (scrollTicking) {
+                    return;
+                }
+
+                scrollTicking = true;
+                window.requestAnimationFrame(syncActiveLinkToScroll);
+            }
+
+            quickLinks.forEach(function (link) {
+                link.addEventListener('click', function () {
+                    const targetId = this.getAttribute('href').replace('#', '');
+                    setActiveLink(targetId);
+                });
+            });
+
+            if (quickToggle) {
+                quickToggle.addEventListener('click', function () {
+                    setMenuOpen(!quickMenu.classList.contains('is-open'));
+
+                    if (quickMenu.classList.contains('is-open')) {
+                        centerQuickLink(quickList.querySelector('.collection-quick-link.on'));
+                    }
+                });
+            }
+
+            syncMenuMode();
+            syncActiveLinkToScroll();
+            window.addEventListener('scroll', requestActiveSync, { passive: true });
+            window.addEventListener('resize', requestActiveSync);
+
+            if (typeof mobileMediaQuery.addEventListener === 'function') {
+                mobileMediaQuery.addEventListener('change', function () {
+                    syncMenuMode();
+                    requestActiveSync();
+                });
+            } else if (typeof mobileMediaQuery.addListener === 'function') {
+                mobileMediaQuery.addListener(function () {
+                    syncMenuMode();
+                    requestActiveSync();
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -11,19 +11,19 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 </head>
 
-<body class="codex-popup-body">
-	<div class="layer-dim codex-popup-dim"></div>
-	<div class="layer-wrap codex-popup-wrap codex-fade-in" import-css="['comn-form']" ng-controller="AddressPopupCtrl">
-		<div class="layer-header codex-popup-header">
+<body class="popup-body">
+	<div class="layer-dim popup-dim"></div>
+	<div class="layer-wrap popup-wrap fade-in" import-css="['comn-form']" ng-controller="AddressPopupCtrl">
+		<div class="layer-header popup-header">
 			<div class="flex-between-top gap-x-xs">
-				<h1 class="layer-title codex-popup-title">주소 검색</h1>
-				<a href="#" class="btn-pop-close codex-pop-close" role="button" ng-click="vm.popupClose('cancel')">
-					<span class="hide_txt codex-hide-txt">레이어 닫기</span>
+				<h1 class="layer-title popup-title">주소 검색</h1>
+				<a href="#" class="btn-pop-close pop-close" role="button" ng-click="vm.popupClose('cancel')">
+					<span class="hide_txt hide-text">레이어 닫기</span>
 				</a>
 			</div>
 		</div>
 
-		<div class="layer-content codex-popup-content">
+		<div class="layer-content popup-content">
 			<div class="form-wrapper">
 				<label for="addressKeyword" class="txt-body3">도로명, 건물명 또는 지번 입력</label>
 				<div class="mt-xs2 search-row address-search-row">
@@ -80,7 +80,7 @@
 			</div>
 		</div>
 
-		<div class="layer-cta codex-popup-cta">
+		<div class="layer-cta popup-cta">
 			<div class="flex-items-center gap-x-xs compact" ng-show="vm.selectedAddress">
 				<a href="#" role="button" class="bts-cta gray" ng-click="vm.resetSelection()">이전</a>
 				<a href="#" id="addrConfirmButton" role="button"

@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Badge 컴포넌트</title>
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/comn-form.css?v=bust3">
+    <style>
+        body {
+            background-color: #f5f6f9;
+            padding: 24px;
+            font-family: 'KBFG', AppleSDGothicNeo, sans-serif;
+        }
+
+        .comp-page {
+            max-width: 860px;
+            margin: 0 auto;
+        }
+
+        .comp-section {
+            margin-bottom: 24px;
+            background: #fff;
+            border: 1.5px dashed #c1a8e8;
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .comp-section-title {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 12px;
+            color: #c1a8e8;
+            font-weight: 500;
+            margin-bottom: 16px;
+        }
+
+        .comp-section-title::before {
+            content: '❖';
+            font-size: 10px;
+        }
+
+        .comp-row {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 8px 16px;
+            padding: 6px 0;
+        }
+
+
+
+        /* Status badge (한국어) */
+        .badge-status {
+            display: inline-flex;
+            align-items: center;
+            height: 22px;
+            padding: 0 6px;
+            font-size: 12px;
+            font-weight: 500;
+            border-radius: 4px;
+        }
+
+        .badge-status.normal {
+            color: #2d4a9b;
+        }
+
+        .badge-status.confirm {
+            color: #10a27a;
+        }
+
+        .badge-status.required {
+            color: #fff;
+            background-color: #2d4a9b;
+        }
+
+        .badge-status.unjoined {
+            color: #999;
+        }
+
+        .badge-status.joined {
+            color: #111;
+            background-color: #ffde33;
+        }
+
+        /* Icon badge */
+        .badge-icon {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            height: 22px;
+            padding: 0 6px;
+            font-size: 12px;
+            font-weight: 500;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            background: #fff;
+            color: #333;
+        }
+
+        .badge-icon .ico {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background-color: #ccc;
+            flex-shrink: 0;
+        }
+
+        /* Status icon badge */
+        .badge-si {
+            display: inline-flex;
+            align-items: center;
+            gap: 3px;
+            font-size: 12px;
+            font-weight: 500;
+            color: #333;
+        }
+
+        .badge-si .si-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 14px;
+            height: 14px;
+            font-size: 10px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .badge-si .si-icon.ban {
+            color: #ed3437;
+            border: 1.5px solid #ed3437;
+        }
+
+        .badge-si .si-icon.check-g {
+            color: #fff;
+            background-color: #10a27a;
+        }
+
+        .badge-si .si-icon.check-b {
+            color: #fff;
+            background-color: #2d4a9b;
+        }
+
+        .badge-si .si-icon.dot-b {
+            background-color: #2d4a9b;
+        }
+
+        .badge-si .si-icon.dot-g {
+            background-color: #ccc;
+        }
+
+        .badge-si .si-icon.x-r {
+            color: #fff;
+            background-color: #ed3437;
+        }
+
+        .badge-si.disabled {
+            color: #999;
+        }
+
+        /* Number square badge */
+        .label-number-text {
+            display: inline-flex;
+            align-items: center;
+            height: 22px;
+            padding: 0 6px;
+            font-size: 13px;
+            font-weight: 700;
+            color: #111;
+            letter-spacing: -0.02em;
+        }
+
+        /* 크기 변형 */
+        .label-number.sm {
+            min-width: 20px;
+            height: 18px;
+            font-size: 11px;
+        }
+
+        .label-number.lg {
+            min-width: 32px;
+            height: 26px;
+            font-size: 15px;
+        }
+
+        .number-round.sm {
+            width: 18px;
+            height: 18px;
+            font-size: 11px;
+        }
+
+        .number-round.lg {
+            width: 28px;
+            height: 28px;
+            font-size: 15px;
+        }
+
+        .number-round.kby {
+            background-color: #ffde33;
+            color: #111;
+            font-weight: 700;
+            font-size: 13px;
+        }
+
+        .number-round.navy {
+            background-color: #0d2b58;
+            color: #fff;
+            font-weight: 700;
+            font-size: 13px;
+        }
+
+        .number-round.text-only {
+            background: none;
+            color: #999;
+            font-weight: 700;
+            font-size: 13px;
+        }
+
+        /* 소형 배지 섹션 */
+        .comp-section.sm-section {
+            display: inline-block;
+            min-width: 100px;
+        }
+
+        .comp-section.sm-section .comp-row {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="comp-page">
+
+        <!-- ===== Badge Main ===== -->
+        <div class="comp-section">
+            <p class="comp-section-title">Badge</p>
+
+            <!-- Row 1: Solid (marker-box) -->
+            <div class="comp-row">
+                <i class="marker-box bg08">Label</i>
+                <i class="marker-box">Label</i>
+                <i class="marker-box bg07">Label</i>
+                <i class="marker-box bg01">Label</i>
+                <i class="marker-box bg03">Label</i>
+                <i class="marker-box bg04">Label</i>
+                <i class="marker-box bg05">Label</i>
+                <i class="marker-box bg06">Label</i>
+                <i class="marker-box bg03">Label</i>
+            </div>
+
+            <!-- Row 2: Light Tint (label-box) -->
+            <!-- Row 2: Light Tint (label-box) -->
+            <div class="comp-row">
+                <span class="label-box bg01">Label</span>
+                <span class="label-box bg02">Label</span>
+                <span class="label-box bg03">Label</span>
+                <span class="label-box bg04">Label</span>
+                <span class="label-box bg05">Label</span>
+                <span class="label-box bg06">Label</span>
+                <span class="label-box bg07">Label</span>
+                <span class="label-box bg08">Label</span>
+                <span class="label-box bg09">Label</span>
+            </div>
+
+            <!-- Row 3: Icon Badge -->
+            <div class="comp-row">
+                <span class="badge-icon"><span class="ico"></span>Label</span>
+                <span class="badge-icon">Label<span class="ico"></span></span>
+                <span class="badge-icon"><span class="ico" style="background:#2d4a9b"></span>Label</span>
+                <span class="badge-icon"><span class="ico" style="background:#2d4a9b"></span>Label</span>
+                <span class="badge-icon"><span class="ico" style="background:#999"></span>Label</span>
+                <span class="badge-icon"><span class="ico" style="background:#999"></span>Label</span>
+                <span class="badge-icon"><span class="ico" style="background:#999"></span>Label</span>
+            </div>
+
+            <!-- Row 4: Status Icon Badge -->
+            <div class="comp-row">
+                <span class="badge-si disabled"><span class="si-icon ban">⊘</span>Label</span>
+                <span class="badge-si"><span class="si-icon check-g">✓</span>Label</span>
+                <span class="badge-si"><span class="si-icon check-b">✓</span>Label</span>
+                <span class="badge-si"><span class="si-icon dot-g"></span>Label</span>
+                <span class="badge-si"><span class="si-icon x-r">✕</span>Label</span>
+                <span class="badge-si">Label<span class="si-icon x-r">✕</span></span>
+                <span class="badge-si">Label<span class="si-icon check-g">✓</span></span>
+                <span class="badge-si">Label<span class="si-icon check-b">✓</span></span>
+                <span class="badge-si">Label<span class="si-icon dot-b"></span></span>
+                <span class="badge-si disabled">Label<span class="si-icon x-r">✕</span></span>
+            </div>
+
+            <!-- Row 5: Korean Status Badge -->
+            <div class="comp-row">
+                <span class="badge-status normal">정상</span>
+                <span class="badge-status confirm">확인</span>
+                <span class="badge-status required">의무</span>
+                <span class="badge-status unjoined">미가입</span>
+                <span class="badge-status joined">가입</span>
+            </div>
+
+            <!-- Row 6: Safety Rating (cmp-chip) -->
+            <div class="comp-row">
+                <i class="cmp-chip rat">안심</i>
+                <i class="cmp-chip rat02">다소안심</i>
+                <i class="cmp-chip rat03">보통</i>
+                <i class="cmp-chip rat04">신중</i>
+                <i class="cmp-chip rat05">주의</i>
+            </div>
+
+            <!-- Row 7: Number Square Badge -->
+            <div class="comp-row">
+                <span class="label-number">6개</span>
+                <span class="label-number bg02">6개</span>
+                <span class="label-number-text">6개</span>
+            </div>
+
+            <!-- Row 8: Number Circle Badge (Large) -->
+            <div class="comp-row">
+                <span class="number-round kby lg">1</span>
+                <span class="number-round text-only lg">1</span>
+                <span class="number-round navy lg">1</span>
+                <span class="number-round text-only lg">1</span>
+            </div>
+
+            <!-- Row 9: Number Circle Badge (Medium) -->
+            <div class="comp-row">
+                <span class="number-round kby">1</span>
+                <span class="number-round text-only">1</span>
+                <span class="number-round navy">1</span>
+                <span class="number-round text-only">1</span>
+            </div>
+
+            <!-- Row 10: Number Circle Badge (Small) -->
+            <div class="comp-row">
+                <span class="number-round kby sm">1</span>
+                <span class="number-round text-only sm">1</span>
+                <span class="number-round navy sm">1</span>
+                <span class="number-round text-only sm">1</span>
+                <span class="number-round kby sm">1</span>
+            </div>
+        </div>
+
+        <!-- ===== Badge 크기 변형 ===== -->
+        <div class="comp-section sm-section">
+            <p class="comp-section-title">Badge (...)</p>
+            <div class="comp-row">
+                <i class="marker-box bg05">Label</i>
+                <i class="marker-box bg03">Label</i>
+                <i class="marker-box bg08">Label</i>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>

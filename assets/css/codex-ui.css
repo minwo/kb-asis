@@ -1,14 +1,14 @@
-.codex-popup-body {
+.popup-body {
 	background: rgba(0, 0, 0, 0.5);
 }
 
-.codex-popup-dim {
+.popup-dim {
 	position: fixed;
 	inset: 0;
 	background: rgba(0, 0, 0, 0.5);
 }
 
-.codex-popup-wrap {
+.popup-wrap {
 	position: fixed;
 	left: 0;
 	right: 0;
@@ -22,20 +22,20 @@
 	z-index: 10;
 }
 
-.codex-popup-header {
+.popup-header {
 	padding: 24px 24px 0;
 }
 
-.codex-popup-title {
+.popup-title {
 	flex: 1;
 }
 
-.codex-popup-content {
+.popup-content {
 	padding: 20px 24px 116px;
 	overflow-y: auto;
 }
 
-.codex-popup-cta {
+.popup-cta {
 	position: fixed;
 	left: 0;
 	right: 0;
@@ -45,15 +45,15 @@
 	z-index: 11;
 }
 
-.codex-pop-close {
+.pop-close {
 	position: relative;
 	width: 32px;
 	height: 32px;
 	flex: 0 0 32px;
 }
 
-.codex-pop-close::before,
-.codex-pop-close::after {
+.pop-close::before,
+.pop-close::after {
 	content: '';
 	position: absolute;
 	top: 15px;
@@ -64,23 +64,23 @@
 	border-radius: 999px;
 }
 
-.codex-pop-close::before {
+.pop-close::before {
 	transform: rotate(45deg);
 }
 
-.codex-pop-close::after {
+.pop-close::after {
 	transform: rotate(-45deg);
 }
 
-.codex-hide-txt {
+.hide-text {
 	display: none;
 }
 
-.codex-fade-in {
-	animation: codexFadeIn 0.2s ease-in-out;
+.fade-in {
+	animation: popupFadeIn 0.2s ease-in-out;
 }
 
-@keyframes codexFadeIn {
+@keyframes popupFadeIn {
 	from {
 		opacity: 0;
 		transform: translateY(12px);
@@ -92,19 +92,19 @@
 	}
 }
 
-.codex-select-list {
+.popup-select-list {
 	margin: 0;
 	padding: 0;
 	list-style: none;
 }
 
-.codex-select-item {
+.popup-select-item {
 	display: flex;
 	align-items: center;
 	padding: 16px 0;
 }
 
-.codex-disabled-cta {
+.disabled-cta {
 	pointer-events: none;
 	opacity: 0.45;
 }

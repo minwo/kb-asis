@@ -24,6 +24,31 @@
 			margin-bottom: 10px;
 		}
 
+		.quick-links {
+			display: flex;
+			gap: 8px;
+			margin-top: 16px;
+		}
+
+		.quick-link {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			min-height: 44px;
+			padding: 0 18px;
+			border-radius: 12px;
+			font-size: 15px;
+			font-weight: 700;
+			color: #111;
+			text-decoration: none;
+			background: #ffde33;
+		}
+
+		.quick-link:hover {
+			text-decoration: none;
+			background: #ffd400;
+		}
+
 		.list-table {
 			width: 100%;
 			border-collapse: collapse;
@@ -130,6 +155,10 @@
 		<div class="list-header">
 			<h1>코딩리스트</h1>
 			<p>프로젝트 개발 항목 목록</p>
+			<div class="quick-links">
+				<a href="component-collection.html" target="_blank" class="quick-link file-link"
+					data-preview="component-collection.html">컴포넌트 컬렉션 바로가기</a>
+			</div>
 		</div>
 
 		<table class="list-table">
@@ -148,7 +177,7 @@
 					<td>1</td>
 					<td><a href="DH03_LT_RD0205M_DA.html" target="_blank" class="file-link"
 							data-preview="DH03_LT_RD0205M_DA.html">상품 선택</a></td>
-					<td>장기보험 상품 선택 페이지</td>
+					<td>상품 선택</td>
 					<td>-</td>
 					<td><span class="status-badge status-complete">완료</span></td>
 					<td>2026-03-20</td>
@@ -157,124 +186,142 @@
 					<td>2</td>
 					<td><a href="DH03_LT_RD0200M_DA.html" target="_blank" class="file-link"
 							data-preview="DH03_LT_RD0200M_DA.html">플랜 선택</a></td>
-					<td>나에게 맞는 플랜 선택 페이지</td>
+					<td>플랜 선택</td>
 					<td>-</td>
 					<td><span class="status-badge status-complete">완료</span></td>
 					<td>2026-03-18</td>
 				</tr>
 				<tr>
 					<td>3</td>
-					<td><a href="DH03_LT_BF0137M_DA.html" target="_blank" class="file-link"
-							data-preview="DH03_LT_BF0137M_DA.html">할인 기준 안내</a></td>
-					<td>자동차보험 가입 고객 할인 기준 안내 페이지</td>
+					<td><a href="DH03_LT_BF0139M_DA.html" target="_blank" class="file-link"
+							data-preview="DH03_LT_BF0139M_DA.html">해외여행보험 플랜 선택</a></td>
+					<td>해외여행보험 플랜 선택</td>
 					<td>-</td>
 					<td><span class="status-badge status-complete">완료</span></td>
-					<td>2026-04-10</td>
+					<td>2026-04-15</td>
 				</tr>
 				<tr>
 					<td>4</td>
-					<td><a href="DH03_LT_BF0136M_DA.html" target="_blank" class="file-link"
-							data-preview="DH03_LT_BF0136M_DA.html">보장 상세 보기</a></td>
-					<td>운전자보험 핵심보장 상세 안내 페이지</td>
+					<td><a href="DH03_LT_BF0138P_DA.html" target="_blank" class="file-link"
+							data-preview="DH03_LT_BF0138P_DA.html">가입 안내</a></td>
+					<td>가입 안내</td>
 					<td>-</td>
 					<td><span class="status-badge status-complete">완료</span></td>
 					<td>2026-04-10</td>
 				</tr>
 				<tr>
 					<td>5</td>
-					<td><a href="DH03_LT_BF0135P_DA.html" target="_blank" class="file-link"
-							data-preview="DH03_LT_BF0135P_DA.html">운전자보험 가입 이벤트 팝업</a></td>
-					<td>운전자보험 경품 지급 조건 및 가입 CTA 팝업</td>
+					<td><a href="DH03_LT_BF0137M_DA.html" target="_blank" class="file-link"
+							data-preview="DH03_LT_BF0137M_DA.html">할인 기준 안내</a></td>
+					<td>할인 기준 안내</td>
 					<td>-</td>
 					<td><span class="status-badge status-complete">완료</span></td>
 					<td>2026-04-10</td>
 				</tr>
 				<tr>
 					<td>6</td>
-					<td><a href="DH03_LT_BF0134P_DA.html" target="_blank" class="file-link"
-							data-preview="DH03_LT_BF0134P_DA.html">만기 유지 보너스 팝업</a></td>
-					<td>만기 유지 보너스 환급 기준 안내 팝업</td>
+					<td><a href="DH03_LT_BF0136M_DA.html" target="_blank" class="file-link"
+							data-preview="DH03_LT_BF0136M_DA.html">보장 상세 보기</a></td>
+					<td>보장 상세 보기</td>
 					<td>-</td>
 					<td><span class="status-badge status-complete">완료</span></td>
-					<td>2026-04-09</td>
+					<td>2026-04-10</td>
 				</tr>
 				<tr>
 					<td>7</td>
-					<td><a href="DH03_LT_BF0133M_DA.html" target="_blank" class="file-link"
-							data-preview="DH03_LT_BF0133M_DA.html">운전자보험 선택</a></td>
-					<td>운전자보험 소개 및 FAQ 안내 페이지</td>
+					<td><a href="DH03_LT_BF0135P_DA.html" target="_blank" class="file-link"
+							data-preview="DH03_LT_BF0135P_DA.html">운전자보험 가입 이벤트 팝업</a></td>
+					<td>운전자보험 가입 이벤트 팝업</td>
+					<td>-</td>
+					<td><span class="status-badge status-complete">완료</span></td>
+					<td>2026-04-10</td>
+				</tr>
+				<tr>
+					<td>8</td>
+					<td><a href="DH03_LT_BF0134P_DA.html" target="_blank" class="file-link"
+							data-preview="DH03_LT_BF0134P_DA.html">만기 유지 보너스 팝업</a></td>
+					<td>만기 유지 보너스 팝업</td>
 					<td>-</td>
 					<td><span class="status-badge status-complete">완료</span></td>
 					<td>2026-04-09</td>
 				</tr>
 				<tr>
-					<td>8</td>
-					<td><a href="DH03_LT_BF0132M_DA.html" target="_blank" class="file-link"
-							data-preview="DH03_LT_BF0132M_DA.html">가입 전 확인</a></td>
-					<td>해외여행보험 가입 전 고지사항 확인 페이지</td>
-					<td>-</td>
-					<td><span class="status-badge status-complete">완료</span></td>
-					<td>2026-04-08</td>
-				</tr>
-				<tr>
 					<td>9</td>
-					<td><a href="DH03_LT_BF0131M_DA.html" target="_blank" class="file-link"
-							data-preview="DH03_LT_BF0131M_DA.html">동의 대기 안내</a></td>
-					<td>동반인 동의 대기 및 결제 정보 확인 페이지</td>
+					<td><a href="DH03_LT_BF0133M_DA.html" target="_blank" class="file-link"
+							data-preview="DH03_LT_BF0133M_DA.html">운전자보험 선택</a></td>
+					<td>운전자보험 선택</td>
 					<td>-</td>
 					<td><span class="status-badge status-complete">완료</span></td>
-					<td>2026-04-08</td>
+					<td>2026-04-09</td>
 				</tr>
 				<tr>
 					<td>10</td>
-					<td><a href="DH03_LT_BF0129P_DA.html" target="_blank" class="file-link"
-							data-preview="DH03_LT_BF0129P_DA.html">다른 사업장 조사 팝업</a></td>
-					<td>동일 방화구역 내 다른 사업장 여부 조사 팝업</td>
+					<td><a href="DH03_LT_BF0132M_DA.html" target="_blank" class="file-link"
+							data-preview="DH03_LT_BF0132M_DA.html">가입 전 확인</a></td>
+					<td>가입 전 확인</td>
 					<td>-</td>
 					<td><span class="status-badge status-complete">완료</span></td>
-					<td>2026-04-07</td>
+					<td>2026-04-08</td>
 				</tr>
 				<tr>
 					<td>11</td>
-					<td><a href="DH03_LT_BF0110M_DA.html" target="_blank" class="file-link"
-							data-preview="DH03_LT_BF0110M_DA.html">건물 정보 입력</a></td>
-					<td>사업장 건물 정보 입력 및 건축물 대장 조회 페이지</td>
+					<td><a href="DH03_LT_BF0131M_DA.html" target="_blank" class="file-link"
+							data-preview="DH03_LT_BF0131M_DA.html">동의 대기 안내</a></td>
+					<td>동의 대기 안내</td>
 					<td>-</td>
 					<td><span class="status-badge status-complete">완료</span></td>
 					<td>2026-04-08</td>
 				</tr>
 				<tr>
 					<td>12</td>
-					<td><a href="DH03_LT_BF0109P_DA.html" target="_blank" class="file-link"
-							data-preview="DH03_LT_BF0109P_DA.html">업종 선택 팝업</a></td>
-					<td>사업장 업종 선택 팝업 모달</td>
-					<td>-</td>
-					<td><span class="status-badge status-complete">완료</span></td>
-					<td>2026-03-25</td>
-				</tr>
-				<tr>
-					<td>13</td>
-					<td><a href="DH03_LT_BF0107M_DA.html" target="_blank" class="file-link"
-							data-preview="DH03_LT_BF0107M_DA.html">추가보장 선택</a></td>
-					<td>사업장 조건에 맞는 추가보장 선택 페이지</td>
+					<td><a href="DH03_LT_BF0129P_DA.html" target="_blank" class="file-link"
+							data-preview="DH03_LT_BF0129P_DA.html">다른 사업장 조사 팝업</a></td>
+					<td>다른 사업장 조사 팝업</td>
 					<td>-</td>
 					<td><span class="status-badge status-complete">완료</span></td>
 					<td>2026-04-07</td>
 				</tr>
 				<tr>
+					<td>13</td>
+					<td><a href="DH03_LT_BF0110M_DA.html" target="_blank" class="file-link"
+							data-preview="DH03_LT_BF0110M_DA.html">건물 정보 입력</a></td>
+					<td>건물 정보 입력</td>
+					<td>-</td>
+					<td><span class="status-badge status-complete">완료</span></td>
+					<td>2026-04-08</td>
+				</tr>
+				<tr>
 					<td>14</td>
-					<td><a href="DH03_LT_BF0104M_DA.html" target="_blank" class="file-link"
-							data-preview="DH03_LT_BF0104M_DA.html">업종 정보 선택</a></td>
-					<td>사업장 업종 정보 선택 페이지</td>
+					<td><a href="DH03_LT_BF0109P_DA.html" target="_blank" class="file-link"
+							data-preview="DH03_LT_BF0109P_DA.html">업종 선택 팝업</a></td>
+					<td>업종 선택 팝업</td>
 					<td>-</td>
 					<td><span class="status-badge status-complete">완료</span></td>
 					<td>2026-03-25</td>
 				</tr>
 				<tr>
 					<td>15</td>
+					<td><a href="DH03_LT_BF0107M_DA.html" target="_blank" class="file-link"
+							data-preview="DH03_LT_BF0107M_DA.html">추가보장 선택</a></td>
+					<td>추가보장 선택</td>
+					<td>-</td>
+					<td><span class="status-badge status-complete">완료</span></td>
+					<td>2026-04-07</td>
+				</tr>
+				<tr>
+					<td>16</td>
+					<td><a href="DH03_LT_BF0104M_DA.html" target="_blank" class="file-link"
+							data-preview="DH03_LT_BF0104M_DA.html">업종 정보 선택</a></td>
+					<td>업종 정보 선택</td>
+					<td>-</td>
+					<td><span class="status-badge status-complete">완료</span></td>
+					<td>2026-03-25</td>
+				</tr>
+				<tr>
+					<td>17</td>
 					<td><a href="DH03_LT_BF0102M_DA.html" target="_blank" class="file-link"
 							data-preview="DH03_LT_BF0102M_DA.html">의무보험 대상 선택</a></td>
-					<td>손보사 의무보험 대상 선택 페이지</td>
+					<td>의무보험 대상 선택</td>
 					<td>-</td>
 					<td><span class="status-badge status-complete">완료</span></td>
 					<td>2026-03-15</td>

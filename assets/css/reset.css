@@ -87,7 +87,7 @@ nav,
 section {
     display: block
 }
-
+i{font-style: normal;}
 button {
     border: 0;
 }

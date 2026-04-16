@@ -150,6 +150,31 @@ $html = @"
 			margin-bottom: 10px;
 		}
 
+		.quick-links {
+			display: flex;
+			gap: 8px;
+			margin-top: 16px;
+		}
+
+		.quick-link {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			min-height: 44px;
+			padding: 0 18px;
+			border-radius: 12px;
+			font-size: 15px;
+			font-weight: 700;
+			color: #111;
+			text-decoration: none;
+			background: #ffde33;
+		}
+
+		.quick-link:hover {
+			text-decoration: none;
+			background: #ffd400;
+		}
+
 		.list-table {
 			width: 100%;
 			border-collapse: collapse;
@@ -256,6 +281,10 @@ $html = @"
 		<div class="list-header">
 			<h1>코딩리스트</h1>
 			<p>프로젝트 개발 항목 목록</p>
+			<div class="quick-links">
+				<a href="component-collection.html" target="_blank" class="quick-link file-link"
+					data-preview="component-collection.html">컴포넌트 컬렉션 바로가기</a>
+			</div>
 		</div>
 
 		<table class="list-table">

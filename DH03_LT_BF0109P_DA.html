@@ -11,16 +11,16 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 </head>
 
-<body class="codex-popup-body">
-	<div class="codex-popup-dim"></div>
-	<div class="layer-wrap codex-popup-wrap codex-fade-in" import-css="['comn-form']" ng-controller="PopupCtrl">
+<body class="popup-body">
+	<div class="popup-dim"></div>
+	<div class="layer-wrap popup-wrap fade-in" import-css="['comn-form']" ng-controller="PopupCtrl">
 
-		<div class="layer-content codex-popup-content biz-popup-content">
+		<div class="layer-content popup-content biz-popup-content">
 			<p class="sub-title2">사업장 업종 선택</p>
 
-			<ul class="select-list codex-select-list">
+			<ul class="select-list popup-select-list">
 				<li ng-repeat="data in vm.planByBizKndArray track by $index">
-					<a href="#" class="items-center codex-select-item biz-popup-item {{vm.bizkndScCd == data.cd ? 'on' : ''}}"
+					<a href="#" class="items-center popup-select-item biz-popup-item {{vm.bizkndScCd == data.cd ? 'on' : ''}}"
 						ng-click="vm.selBizKndSc(data)">
 						<div style="flex: 1;">
 							<p class="txt-body1 fw-m">{{data.nm}}</p>
@@ -33,14 +33,14 @@
 
 		</div>
 
-		<div class="layer-cta codex-popup-cta">
+		<div class="layer-cta popup-cta">
 			<div class="flex-center">
 				<a href="#" id="mo_btn_09P" class="bts-cta" role="button" ng-click="vm.popupClose('confirm')">완료</a>
 			</div>
 		</div>
 
-		<a href="#none" ng-click="vm.popupClose('cancel')" class="btn-pop-close codex-pop-close" role="button"><span
-				class="hide_txt codex-hide-txt">닫기</span></a>
+		<a href="#none" ng-click="vm.popupClose('cancel')" class="btn-pop-close pop-close" role="button"><span
+				class="hide_txt hide-text">닫기</span></a>
 	</div>
 
 	<script>
